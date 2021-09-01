@@ -12,9 +12,11 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("You have awoken from your long nights rest, suprisingly to find yourself stranded " +
-                " on a sinking cruise ship. Search the rooms of the ship to find materials to patch the holes located " +
-                " in 3 different rooms in the ship. Then after, board the auxilary life boat to escape !");
+            Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded ");
+            Console.WriteLine("on a sinking cruise ship. Search the rooms of the ship to find materials to patch the holes located ");
+            Console.WriteLine("in 3 different rooms in the ship. Then after, board the auxilary life boat to escape !");
+
+            Console.ReadLine();
         }
     }
 }
