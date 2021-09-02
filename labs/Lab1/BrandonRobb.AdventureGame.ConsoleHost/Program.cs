@@ -21,16 +21,25 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                 Console.ReadLine();
                 Console.Clear();
 
-            
-            
-           /* Console.WriteLine("Type YES To Begin or Type NO to Exit");
-            
-          
-             * string enterGame = Console.ReadLine();
-            
-            if enterGame = ("YES")
+                Console.WriteLine("Type YES To Begin or Type NO to Exit");
 
-            */
+                
+            string enterGame = Console.ReadLine();
+            
+                   if (enterGame == "YES")
+            {
+                         Console.WriteLine("OK");
+                   else Console.Write Line("Adios");
+
+
+            }
+
+             
+                    /* string enterGame = Console.ReadLine();
+
+             if enterGame = ("YES")
+
+             */
             Console.ReadLine();
 
         }
