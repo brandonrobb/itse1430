@@ -31,15 +31,15 @@ namespace MovieLibrary.ConsoleHost
             //Movie details -ignore warnings for now..
             string title = ReadString("Enter the movie title:", true);
               
-            string description = ReadString("Enter optional descrition:", false); 
+            string description = ReadString("Enter optional descrition:", true); 
 
             int runLength = ReadStringInt32("Enter Run Length (in minutes):", 0);     // >= 0
             ;  //OPtional, In minutes, >=0
             int releaseYear = ReadStringInt32 ("Enter Release Year ():",1990);     // >= 0
 
-            double reviewRating; //Optional, 0.0 to 5.0
-            string rating = ReadString ; // Optional, MPAA (not enforced)
-            bool isClassic; //Optional
+            double reviewRating = ReadStringInt32("Enter Review Rating ():", 0); //Optional, 0.0 to 5.0
+            string rating = ReadString("EnterRating ():", true); // Optional, MPAA (not enforced)
+            bool isClassic = true; //Optional
         }
 
         private static int ReadStringInt32 ( string v1, int v2 ) => throw new NotImplementedException();
