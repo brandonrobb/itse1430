@@ -1,95 +1,87 @@
-﻿//ITSE 1430
-//Movie Library
+﻿// ITSE 1430
+// Movie Library
 using System;
 
 namespace MovieLibrary.ConsoleHost
 {
-    //Main Program
+    //Main program
     class Program
     {
+        //Entry point function
         static void Main ( string[] args )
-            //GetInput ();
-
         {
-        bool done = false;
+            bool done = false;
 
-        char choice = GetInput();
+            char choice = GetInput();
             if (choice == 'Q')
                 done = HandleQuit();
-
-            else if (choice =='A')
-            AddMovie();
-
+            else if (choice == 'A')
+                AddMovie();
             else
                 Console.WriteLine("Unknown option");
-        
-           
-    }
-        static void AddMovie () 
-        {
-
-            //Movie details -ignore warnings for now..
-            string title = ReadString("Enter the movie title:", true);
-              
-            string description = ReadString("Enter optional descrition:", true); 
-
-            int runLength = ReadStringInt32("Enter Run Length (in minutes):", 0);     // >= 0
-            ;  //OPtional, In minutes, >=0
-            int releaseYear = ReadStringInt32 ("Enter Release Year ():",1990);     // >= 0
-
-            double reviewRating = ReadStringInt32("Enter Review Rating ():", 0); //Optional, 0.0 to 5.0
-            string rating = ReadString("EnterRating ():", true); // Optional, MPAA (not enforced)
-            bool isClassic = true; //Optional
+            //TODO: handle additional stuff            
         }
 
-        private static int ReadStringInt32 ( string v1, int v2 ) => throw new NotImplementedException();
+        static void AddMovie ()
+        {
+            //Movie details - ignoring warnings for now...
+            string title = ReadString("Enter the movie title: ", true);
+            string description = ReadString("Enter the optional description: ", false);
+
+            int runLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
+            int releaseYear = ReadInt32("Enter the release year (min 1900): ", 1900); //1900+
+
+            double reviewRating;  //Optional, 0.0 to 5.0
+            string rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
+            bool isClassic;       //Optional
+        }
 
         private static bool HandleQuit ()
         {
-            //return ReadBoolean("Are you sure you want to quit (Y/N)?"))
-            //Dispaly a Confirmation
-            if (ReadBoolean("Are you sure you want to quit(Y/N)?"))
+            //return ReadBoolean("Are you sure you want to quit (Y/N)? ");
+
+            //Display a confirmation
+            if (ReadBoolean("Are you sure you want to quit (Y/N)? "))
                 return true;
 
             return false;
-
-            //Return Results
-            
         }
 
         private static bool ReadBoolean ( string message )
-
-            static int ReadInt32 ( string message, int minimumValue )
         {
             Console.Write(message);
-            string input = Console.ReadLine();
-           // int result = Int32.Parse(input);
-           // bool success = Int32.Parse(input); //crashes program
-            int result;
-            if (Int32.TryParse (input, out result))
 
-                      return result;
-            return -1;
-        }
-
-       static string ReadString (string message, bool required )
-        {
-            Console.Write(message);
             ConsoleKeyInfo input = Console.ReadKey();
             if (input.Key == ConsoleKey.Y)
                 return true;
 
-            //Todo: Input validation
-            string input = Console.ReadLine();
+            //TODO: Input validation
             return false;
-
         }
+
+        static int ReadInt32 ( string message, int minimumValue )
+        {
+            Console.Write(message);
+
+            string input = Console.ReadLine();
+
+            //TODO: Input validation
+            //int result = Int32.Parse(input); //Crashes program, not good for input
+            int result;
+            if (Int32.TryParse(input, out result))
+                return result;
+
+            return -1;
+        }
+
         static string ReadString ( string message, bool required )
         {
             Console.Write(message);
-            //Todo: Input validatio - required, normalize
 
+            //TODO: Input validation - required, normalize
             string input = Console.ReadLine();
+
+            return input;
         }
 
         static char GetInput ()
@@ -97,18 +89,18 @@ namespace MovieLibrary.ConsoleHost
             Console.WriteLine("Movie Library");
             Console.WriteLine("---------------");
 
-            Console.Write("A)dd");
-            Console.WriteLine("Q)uit");
+            Console.WriteLine("A) dd");
+            Console.WriteLine("Q) uit");
 
-            //Todo: Input Validation
+            //TODO: Input validation
             //Get input
-            string input = Console.ReadLine ();
-            if (input =="Q")
+            string input = Console.ReadLine();
+            if (input == "Q")
                 return 'Q';
             else if (input == "A")
                 return 'A';
 
-            return default(char);
+            return default(char); //default
         }
     }
 }
