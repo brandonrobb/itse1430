@@ -11,21 +11,25 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            static void DemoLogicalOperators()
+            {
 
-            /* {
-            DisplayMenu();
+                //Logical And - true if both operands are true
+                //Logical Or - true if either operand is true
+                // X    Y   &&  ||
+                // -----------------
+                // F    F   F   F
+                //F     T   F   T
+                //T     F   F   T
+                //T     T   T   T
 
-            //Movie details -ignore warnings for now..
-            string title;   //Required
-            string description; //Optional
 
-            int runLength;  //OPtional, In minutes, >=0
-            int releaseYear;    //1900+
+                //NOT 
+                //  F   !F =    T
+                //  T   !T =    F
+            }
 
-            double reviewRating; //Optional, 0.0 to 5.0
-            string rating; // Optional, MPAA (not enforced)
-            bool isClassic; //Optional */
+           
         }
     }
 }
