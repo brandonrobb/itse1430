@@ -10,38 +10,28 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 {
     class Program
     {
-        static void Main ( string[] args )
+        static void Main (string[] args)
         {
-            
-                Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded ");
-                Console.WriteLine("on a sinking cruise ship. Search the rooms of the ship to find  ");
-                Console.WriteLine("materials to patch the holes in the ship located in 3 different rooms. ");
-                Console.WriteLine("Then after, you will be able to board the auxilary life boat to escape! ");
 
-                Console.ReadLine();
-                Console.Clear();
+            Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded on a sinking cruise ship. " +
+                "\nSearch the rooms of the ship to find materials to patch the holes in the ship located in 3 different rooms." +
+                " \nThen after, you will be able to board the auxilary life boat to escape! \n");
 
-                Console.WriteLine("Type YES To Begin or Type NO to Exit");
+            //Console.Clear();
 
-                
+            Console.WriteLine("Type YES To Begin or Type NO to Exit");
+
+
             string enterGame = Console.ReadLine();
-            
-                   if (enterGame == "YES")
+
+            if (enterGame == "YES")
             {
-                         Console.WriteLine("OK");
-                   else Console.Write Line("Adios");
-
-
+                Console.WriteLine("OK");
+            } 
+            else
+            {
+                Console.WriteLine("Adios");
             }
-
-             
-                    /* string enterGame = Console.ReadLine();
-
-             if enterGame = ("YES")
-
-             */
-            Console.ReadLine();
-
         }
     }
 }
