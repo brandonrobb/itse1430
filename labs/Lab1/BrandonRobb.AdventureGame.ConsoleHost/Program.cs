@@ -173,60 +173,16 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             Console.Clear();
         }
 
-        private static bool myHandleQuit ()
-        {
-            Console.WriteLine("Type YES To Begin or Type NO to Exit");
+                Console.WriteLine("Type YES To Begin or Type NO to Exit");
 
 
 
             string enterGame = Console.ReadLine();
+            
+                   if (enterGame == "YES")
             {
-                if (enterGame == "YES")
-
-                    return false;
-
-                else if (enterGame == "yes")
-
-                    return false;
-
-                else
-                    Console.WriteLine("Adios");
-                return true;
-            }
-
-
-
-        }
-
-
-
-
-        /* string enterGame = Console.ReadLine();
-if enterGame = ("YES")
-*/
-
-        static void Lv1PromptA ()
-        {
-            Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Find a round patch and a door key");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv1PromptB ()
-        {
-            Console.WriteLine("Take the round patch and key to room 9 and patch the hole!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv2PromptA ()
-        {
-            Console.WriteLine("Great Job!");
-            Console.ReadLine();
-            Console.Clear();
-        }
+                         Console.WriteLine("OK");
+                   else Console.Write Line("Adios");
 
         static void Lv2PromptB ()
         {
@@ -235,50 +191,18 @@ if enterGame = ("YES")
             Console.Clear();
         }
 
-        static void Lv3PromptA ()
-        {
-            Console.WriteLine("You did it!");
+            }
+
+             
+                    /* string enterGame = Console.ReadLine();
+
+             if enterGame = ("YES")
+
+             */
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv3PromptB ()
-        {
-            Console.WriteLine("Take the triangle weld patch and key and find the next hole to patch");
-            Console.ReadLine();
-            Console.Clear();
         }
-
-        static void Lv4PromptA ()
-        {
-            Console.WriteLine("Great Work!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv4PromptB ()
-        {
-            Console.WriteLine("Take the key and water pump to the last room. \n" +
-                " unlock the room and pump the water out  ");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv5PromptA ()
-        {
-            Console.WriteLine("The water is pumping out, aboard the auxilary boat to save your assets!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv5PromptB ()
-        {
-            Console.WriteLine("You did it, you escaped from the sinking ship!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-
-
     }
 }
