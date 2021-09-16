@@ -17,7 +17,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             bool done = false;
 
             //Handle quit isnt working
-            done = EnterShip("Would you like to board the ship (Y/N)? ");
+            done = EnterShip("Would you like to try to escape the ship (Y/N)? ");
 
 
 
@@ -72,13 +72,14 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                 */
 
             }
-            Console.ReadLine();
+           
             Console.Clear();
-            Console.WriteLine("\nGlad you survived!\n");
+            background();
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tSorry, you drowned on the ship...");
             Console.ReadLine();
             Console.Clear();
         }   //end main
-
+        
 
 
 
@@ -108,7 +109,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
         }
 
 
-        private static bool HandleQuit ()
+        private static bool HandleQuit (string message)
         {
             //Display a confirmation
             if (ReadBoolean(message))
@@ -121,7 +122,18 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             //Shortcut of below code, preferred
             //return ReadBoolean("Are you sure you want to quit (Y/N)? ");
         }
+        private static bool EnterShip ( string message )
+        {
+            //Display a confirmation
+            if (ReadBoolean(message))
+                return false;
 
+
+            return true;
+
+
+
+        }
 
         private static bool ReadBoolean ( string message )
         {
@@ -159,11 +171,17 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             Console.Clear();
         }
 
-        private static bool myHandleQuit()
+        static void background ()
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            //Console.ResetColor();
+            //Console.ReadLine();
+        }
+            private static bool myHandleQuit()
         {
             Console.WriteLine("Type YES To Begin or Type NO to Exit");
 
-
+             
 
             string enterGame = Console.ReadLine();
             {
@@ -219,6 +237,9 @@ if enterGame = ("YES")
             Console.WriteLine("Take the square wood patch and key and find the next hole to patch");
             Console.ReadLine();
             Console.Clear();
+            Console.WriteLine("Hurry");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         static void Lv3PromptA()
@@ -233,6 +254,7 @@ if enterGame = ("YES")
             Console.WriteLine("Take the triangle weld patch and key and find the next hole to patch");
             Console.ReadLine();
             Console.Clear();
+            
         }
 
         static void Lv4PromptA()
@@ -246,6 +268,9 @@ if enterGame = ("YES")
         {
             Console.WriteLine("Take the key and water pump to the last room. \n" +
                 " unlock the room and pump the water out  ");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Move Quickly!!!");
             Console.ReadLine();
             Console.Clear();
         }
