@@ -10,7 +10,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 {
     class Program
     {
-        static void Main ( string[] args )
+        static void Main(string[] args)
         {
             introPrompt();
 
@@ -82,33 +82,33 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
 
 
-        static void runGameLv1 ()
+        static void runGameLv1()
         {
 
         }
 
-        static void runGameLv2 ()
+        static void runGameLv2()
         {
 
         }
 
-        static void runGameLv3 ()
+        static void runGameLv3()
         {
 
         }
 
-        static void runGameLv4 ()
+        static void runGameLv4()
         {
 
         }
 
-        static void runGameLv5 ()
+        static void runGameLv5()
         {
 
         }
 
 
-        private static bool HandleQuit ( string message )
+        private static bool HandleQuit ()
         {
             //Display a confirmation
             if (ReadBoolean(message))
@@ -120,20 +120,6 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
             //Shortcut of below code, preferred
             //return ReadBoolean("Are you sure you want to quit (Y/N)? ");
-        }
-
-
-        private static bool EnterShip ( string message )
-        {
-            //Display a confirmation
-            if (ReadBoolean(message))
-                return false;
-
-
-            return true;
-
-
-
         }
 
 
@@ -162,7 +148,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
 
 
-        static void introPrompt ()
+        static void introPrompt()
         {
             Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded " +
                    " on a sinking cruise ship. \n Search the rooms of the ship to find " +
@@ -173,7 +159,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             Console.Clear();
         }
 
-        private static bool myHandleQuit ()
+        private static bool myHandleQuit()
         {
             Console.WriteLine("Type YES To Begin or Type NO to Exit");
 
@@ -205,7 +191,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 if enterGame = ("YES")
 */
 
-        static void Lv1PromptA ()
+        static void Lv1PromptA()
         {
             Console.ReadLine();
             Console.Clear();
@@ -214,49 +200,49 @@ if enterGame = ("YES")
             Console.Clear();
         }
 
-        static void Lv1PromptB ()
+        static void Lv1PromptB()
         {
             Console.WriteLine("Take the round patch and key to room 9 and patch the hole!");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv2PromptA ()
+        static void Lv2PromptA()
         {
             Console.WriteLine("Great Job!");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv2PromptB ()
+        static void Lv2PromptB()
         {
             Console.WriteLine("Take the square wood patch and key and find the next hole to patch");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv3PromptA ()
+        static void Lv3PromptA()
         {
             Console.WriteLine("You did it!");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv3PromptB ()
+        static void Lv3PromptB()
         {
             Console.WriteLine("Take the triangle weld patch and key and find the next hole to patch");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv4PromptA ()
+        static void Lv4PromptA()
         {
             Console.WriteLine("Great Work!");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv4PromptB ()
+        static void Lv4PromptB()
         {
             Console.WriteLine("Take the key and water pump to the last room. \n" +
                 " unlock the room and pump the water out  ");
@@ -264,14 +250,14 @@ if enterGame = ("YES")
             Console.Clear();
         }
 
-        static void Lv5PromptA ()
+        static void Lv5PromptA()
         {
             Console.WriteLine("The water is pumping out, aboard the auxilary boat to save your assets!");
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void Lv5PromptB ()
+        static void Lv5PromptB()
         {
             Console.WriteLine("You did it, you escaped from the sinking ship!");
             Console.ReadLine();
