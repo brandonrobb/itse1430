@@ -17,19 +17,19 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             bool done = false;
 
             //Handle quit isnt working
-            done = myHandleQuit();
-            
-            
-            
+            done = EnterShip("Would you like to board the ship (Y/N)? ");
 
-            do
+
+
+
+            while (!done)
             {
 
-                //done = HandleQuit();
+
                 //need to implement controls and mapping
 
                 Lv1PromptA();
-                
+
                 runGameLv1();
 
                 Lv1PromptB();
@@ -58,22 +58,26 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
                 Lv5PromptB();
 
+                done = HandleQuit("Are you sure you want to quit (Y/N)? ");
 
                 /*switch ()
                 {
-
-
                  * case 'Q':
                 {
                     done = HandleQuit();
                     break;
                 };
                 case 'Y': EnterGame(); break;
-
                 default: DisplayError("Unknown option"); break;
                 */
-            } while (!done);
-        }
+
+            }
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("\nGlad you survived!\n");
+            Console.ReadLine();
+            Console.Clear();
+        }   //end main
 
 
 
@@ -104,10 +108,10 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
         }
 
 
-        private static bool HandleQuit ()
+        private static bool HandleQuit ( string message )
         {
             //Display a confirmation
-            if (ReadBoolean("Are you sure you want to quit (Y/N)? "))
+            if (ReadBoolean(message))
                 return true;
 
 
@@ -119,6 +123,20 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
         }
 
 
+        private static bool EnterShip ( string message )
+        {
+            //Display a confirmation
+            if (ReadBoolean(message))
+                return false;
+
+
+            return true;
+
+
+
+        }
+
+
         private static bool ReadBoolean ( string message )
         {
             Console.Write(message);
@@ -126,7 +144,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
             do
             {
-                ConsoleKeyInfo input = Console.ReadKey(true);
+                ConsoleKeyInfo input = Console.ReadKey();
                 if (input.Key == ConsoleKey.Y)
                     return true;
                 else if (input.Key == ConsoleKey.N)
@@ -146,9 +164,9 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
         static void introPrompt ()
         {
-            Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded "  +
-                   " on a sinking cruise ship. \n Search the rooms of the ship to find "  +
-                   "materials to patch the holes in the ship located in 3 different rooms. \n "  +
+            Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded " +
+                   " on a sinking cruise ship. \n Search the rooms of the ship to find " +
+                   "materials to patch the holes in the ship located in 3 different rooms. \n " +
                    "Then after, you will be able to board the auxilary life boat to escape! ");
 
             Console.ReadLine();
@@ -175,7 +193,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                     Console.WriteLine("Adios");
                 return true;
             }
-            
+
 
 
         }
@@ -184,9 +202,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
 
         /* string enterGame = Console.ReadLine();
-
 if enterGame = ("YES")
-
 */
 
         static void Lv1PromptA ()
