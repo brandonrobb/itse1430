@@ -143,7 +143,30 @@ namespace HelloWorld
                 
 
 
+
+        
+        string firstName = "Bobby";
+
+        string lastName = "Nanneb";
+
+        namespace = "Hello" + firstName + " " + lastName + 
+
+        name = String.Format("Hello {0} {1}, the year is {2}.", firstName, lastName, year);
+        Console.WriteLine("Hello {0} {1}, the year is {2}.", firstName, lastName, year);
+
+        decimal price = 8.75M;
+    string priceString = price.ToString();
+    priceString = 
+
+        //String interpolation - way to go 
+
+         name = $"Hello {firstName} {lastName}, the year is {year:0000}.";
+
+
         }
+
+
+
         }
     }
 }

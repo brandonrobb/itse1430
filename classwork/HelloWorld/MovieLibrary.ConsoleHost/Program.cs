@@ -49,7 +49,9 @@ namespace MovieLibrary.ConsoleHost
                 return;
 
             //TODO: delete movie
-            Console.WriteLine("Not implemented");
+            title = null;
+
+            
         }
 
         static string title;
@@ -77,11 +79,17 @@ namespace MovieLibrary.ConsoleHost
         static void ViewMovie ()
         {
             //TODO: What if they haven't added one yet?
+            if (String.IsNullOrEmpty(title))
+            {
+                Console.WriteLine("No movie available");
+                return;
+            }
+            ////////////////////////////////////////////////////////////////chech below to make sure correct
             //TODO: Formatting
-            Console.WriteLine(title);
-            Console.WriteLine(releaseYear);
-            Console.WriteLine(runLength);
-            Console.WriteLine(rating);
+            Console.WriteLine($"{title}({releaseYear})");
+            Console.WriteLine($"Runtime: {runLength} mins");
+            Console.WriteLine($"MPAA Rating{rating}");
+            Console.WriteLine($"Classic? {isClassic}");
             Console.WriteLine(isClassic);
             Console.WriteLine(description);
         }
@@ -148,11 +156,14 @@ namespace MovieLibrary.ConsoleHost
 
             do
             {
-                string input = Console.ReadLine();
+                string input = Console.ReadLine().Trim();
 
                 //TODO: required, normalize
+                if (!String.IsNullOrEmpty(input) || !required)
 
                 return input;
+
+                DisplayError("Value is required");
             } while (true);
         }
 
@@ -166,7 +177,8 @@ namespace MovieLibrary.ConsoleHost
         static char GetInput ()
         {
             Console.WriteLine("Movie Library");
-            Console.WriteLine("---------------");
+            //Console.WriteLine("---------------");
+            Console.WriteLine("".PadLeft(15, '-'));
 
             Console.WriteLine("A) dd");
             Console.WriteLine("V) iew");
@@ -176,7 +188,7 @@ namespace MovieLibrary.ConsoleHost
             while (true)
             {
                 //Get input
-                string input = Console.ReadLine();
+                string input = Console.ReadLine().Trim();
                 /*if (input == "Q")
                     return 'Q';
                 else if (input == "A")
@@ -185,7 +197,9 @@ namespace MovieLibrary.ConsoleHost
                     return 'V';
                 else if (input == "D")
                     return 'D'; */
-                switch (input)
+
+                //case insensitive
+                switch (input.ToUpper())
                 {   //No fallthrough must  
                     // must end in break or return
                     case "q":
