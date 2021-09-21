@@ -7,64 +7,25 @@
 using System;
 using System.Threading;
 
-
-
 namespace BrandonRobb.AdventureGame.ConsoleHost
-      
+
 {
     class Program
     {
-
-        static void Main(string[] args)
+        static int currentX;
+        static int currentY;
+        const int MaximumX = 3;
+        static void Main ( string[] args )
         {
-
-            /* ConsoleKeyInfo c = new ConsoleKeyInfo();
-
-             do
-             {
-                 Console.WriteLine("\nPress a key to display; " + "press the 'z' to quit.");
-                 while (Console.KeyAvailable == false)
-                     Thread.Sleep(50);
-                 c = Console.ReadKey();
-                 Console.WriteLine("You pressed the '{0}' key.", c.Key);
-             } while (c.Key != ConsoleKey.Z);
-             Console.ReadLine();
-
-             
-
-                    char roomA ;
-                switch (_Key.Key)
-            {
-                case ConsoleKey.RightArrow = 39;
-                    Console.Writeline("Right Arrow");
-                break;
-                }
-            
-
-
-
-            
-                string direction1 = Console.ReadKey();
-            ConsoleKey direction = Char.Parse(direction1);
-
-                //ConsoleKey
-                // Console.WriteLine(direction);
-
-
-            switch (direction)
-                {
-                    case ConsoleKey.RightArrow:
-                    Console.WriteLine("right arrow");
-                    break;
-                } ;
-            */
 
             introPrompt();
 
             bool done = false;
 
             //Handle quit isnt working
-            done = EnterShip("Would you like to try to escape the ship (Y/N)? ");
+            done = !ReadBoolean("Would you like to try to escape the ship (Y/N)? ");
+            currentX = 2;
+            currentY = 3;
 
 
 
@@ -74,56 +35,34 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
 
                 //need to implement controls and mapping
-
-                Lv1PromptA();
-
-                runGameLv1(){
-                    room8Lv1();
-                };
+                FindRoomToDisplay();
+                Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
+                string input = Console.ReadLine().Trim();
                 
-                                                 
-                
-                Lv1PromptB();
+                //case insensitive
+                switch (input.ToUpper())
+                {   //No fallthrough must  
+                    // must end in break or return
 
-                Lv2PromptA();
+                    case "n":
+                    case "N": MoveNorth(); break;//Later...Cant Access room 3 locked
+                    case "s":
+                    case "S": MoveSouth(); break;
+                    case "e":
+                    case "E": MoveEast(); break;
+                    case "w":
+                    case "W": MoveWest(); break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
+                    case "h":
+                    case "H": help(); break;
+                    case "i":
+                    case "I": FindRoomToDisplay(); break;//Inspect
+                    case "d":
+                    case "D": done = HandleQuit("Are you sure you want to quit (Y/N)? "); break;
+                }
 
-                runGameLv2();
-
-                Lv2PromptB();
-
-                Lv3PromptA();
-
-                runGameLv3();
-
-                Lv3PromptB();
-
-                Lv4PromptA();
-
-                runGameLv4();
-
-                Lv4PromptB();
-
-                Lv5PromptA();
-
-                runGameLv5();
-
-                Lv5PromptB();
-
-                done = HandleQuit("Are you sure you want to quit (Y/N)? ");
-
-                /*switch ()
-                {
-                 * case 'Q':
-                {
-                    done = HandleQuit();
-                    break;
-                };
-                case 'Y': EnterGame(); break;
-                default: DisplayError("Unknown option"); break;
-                */
 
             }
-           
+
             Console.Clear();
             background();
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tSorry, you drowned on the ship...");
@@ -132,361 +71,28 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
         }   //end main
 
 
+      
 
+}
+    static void FindRoomToDisplay ()
+    {
+        int roomNumber = currentX + (MaximumX * (currentY - 1));
 
-        static void room8Lv1 ()
+        switch (roomNumber)
         {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room5Lvl1(); break;
-                    case "s":
-                    case "S": Console.WriteLine("Cant move south"); break;
-                    case "e":
-                    case "E": room9Lvl1(); break; //Later..Console.Write("Room 9 is locked, find key to unlock");
-                    case "w":
-                    case "W": room7Lvl1(); break; //Later.. Console.Write("Room 7 is locked, find key to unlock");
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D": done(); break
-
-
-                        //default:; 
-                }
-
-            } 
-        }
-
-        static void room5Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room2Lvl1(); break;//..room2Lvl2()
-                    case "s":
-                    case "S": room8Lvl1(); break;
-                    case "e":
-                    case "E": room6Lvl1(); break; 
-                    case "w":
-                    case "W": room4Lvl1(); break; 
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room2Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": Console.WriteLine("Cant move North"); break;
-                    case "s":
-                    case "S": room5Lvl1(); break;
-                    case "e":
-                    case "E": room3Lvl1(); break; //Later..Console.Write("Room 3 is locked, find key to unlock");
-                    case "w":
-                    case "W": room1Lvl1(); break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room6Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room3Lvl1(); break;//Later...Cant Access room 3 locked
-                    case "s":
-                    case "S": room9Lvl1(); break;
-                    case "e":
-                    case "E": Console.WriteLine("Cant move East"); break; 
-                    case "w":
-                    case "W": room5Lvl1(); break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
+            case 1: rm1Dsrcpt("This room has a small boat inside but it is filled with water"); break;
+            case 2: rm2Dsrcpt("There is a key and a round object that could be used for a patch"); break;
+            case 3: rm3Dsrcpt("This room has a water pump, a key and a triangle hole in the wall pouring water into the room "); break;
+            case 4: rm4Dsrcpt("This is a empty room with 3 doors"); break;
+            case 5: rm5Dsrcpt("This is a empty room with 4 doors to walk through"); break;
+            case 6: rm6Dsrcpt("Nothing in here, 3 doors you can choose to go through"); break;
+            case 7: rm7Dsrcpt("There is a square hole in the wall leaking water, a triangle patch and a key"); break;
+            case 8: rm8Dsrcpt("Initial starting point.. with 3 doors and an empty table"); break;
+            case 9: rm9Dsrcpt("There is a round hole leaking water, a square patch and a key"); break;
         }
 
 
-        static void room9Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room6Lvl1(); break;
-                    case "s":
-                    case "S": Console.WriteLine("Cant move South"); break;
-                    case "e":
-                    case "E": Console.WriteLine("Cant move East"); break;
-                    case "w":
-                    case "W": room8Lvl1(); break; 
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room7Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room4Lvl1(); break;
-                    case "s":
-                    case "S": Console.WriteLine("Cant move South"); break;
-                    case "e":
-                    case "E": room8Lvl1(); break;
-                    case "w":
-                    case "W": Console.WriteLine("Cant move West"); break;
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room4Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": room1Lvl1(); break;
-                    case "s":
-                    case "S": room7Lvl1(); break;
-                    case "e":
-                    case "E": room5Lvl1(); break;
-                    case "w":
-                    case "W": Console.WriteLine("Cant move West"); break;
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room1Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": Console.WriteLine("Cant move North"); break;
-                    case "s":
-                    case "S": room4Lvl1(); break;
-                    case "e":
-                    case "E": room2Lvl1(); break;
-                    case "w":
-                    case "W": Console.WriteLine("Cant move West"); break;
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-        static void room3Lv1 ()
-        {
-
-
-            //char choice = GetInput();
-            //{
-
-
-            Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-
-            while (true)
-            {
-                string input = Console.ReadLine().Trim();
-                //case insensitive
-                switch (input.ToUpper())
-                {   //No fallthrough must  
-                    // must end in break or return
-
-                    case "n":
-                    case "N": Console.WriteLine("Cant move North"); break;
-                    case "s":
-                    case "S": room6Lvl1(); break;
-                    case "e":
-                    case "E": Console.WriteLine("Cant move East"); break;
-                    case "w":
-                    case "W": room2Lvl1(); break;
-                    case "h":
-                    case "H": help(); break;
-                    case "d":
-                    case "D":
-                    done(); break
-
-
-                        //default:; 
-                }
-
-            }
-        }
-
-
-        private static bool HandleQuit (string message)
+        private static bool HandleQuit ( string message )
         {
             //Display a confirmation
             if (ReadBoolean(message))
@@ -499,19 +105,6 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             //Shortcut of below code, preferred
             //return ReadBoolean("Are you sure you want to quit (Y/N)? ");
         }
-        private static bool EnterShip ( string message )
-        {
-            //Display a confirmation
-            if (ReadBoolean(message))
-                return false;
-
-
-            return true;
-
-
-
-        }
-
         private static bool ReadBoolean ( string message )
         {
             Console.Write(message);
@@ -531,13 +124,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             //return false;
         }
 
-
-
-
-
-
-
-        static void introPrompt()
+        static void introPrompt ()
         {
             Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded " +
                    " on a sinking cruise ship. \n Search the rooms of the ship to find " +
@@ -554,180 +141,47 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             //Console.ResetColor();
             //Console.ReadLine();
         }
-            private static bool myHandleQuit()
-        {
-            Console.WriteLine("Type YES To Begin or Type NO to Exit");
-
-             
-
-            string enterGame = Console.ReadLine();
-            {
-                if (enterGame == "YES")
-
-                    return false;
-
-                else if (enterGame == "yes")
-
-                    return false;
-
-                else
-                    Console.WriteLine("Adios");
-                return true;
-            }
 
 
 
-        }
+           else
+            Console.WriteLine("Unknown option");
 
 
 
 
-        /* string enterGame = Console.ReadLine();
-if enterGame = ("YES")
-*/
-
-        static void Lv1PromptA()
-        {
-            Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Find a round patch and a door key");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv1PromptB()
-        {
-            Console.WriteLine("Take the round patch and key to room 9 and patch the hole!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv2PromptA()
-        {
-            Console.WriteLine("Great Job!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv2PromptB()
-        {
-            Console.WriteLine("Take the square wood patch and key and find the next hole to patch");
-            Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Hurry");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv3PromptA()
-        {
-            Console.WriteLine("You did it!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv3PromptB()
-        {
-            Console.WriteLine("Take the triangle weld patch and key and find the next hole to patch");
-            Console.ReadLine();
-            Console.Clear();
-            
-        }
-
-        static void Lv4PromptA()
-        {
-            Console.WriteLine("Great Work!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv4PromptB()
-        {
-            Console.WriteLine("Take the key and water pump to the last room. \n" +
-                " unlock the room and pump the water out  ");
-            Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Move Quickly!!!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv5PromptA()
-        {
-            Console.WriteLine("The water is pumping out, aboard the auxilary boat to save your assets!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-        static void Lv5PromptB()
-        {
-            Console.WriteLine("You did it, you escaped from the sinking ship!");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
-
-
-         /* if 
-
-                System.Console.ReadKey(true).Key == ConsoleKey.UpArrow
-                 Console.WriteLine("Cannot move Up");
-                 System.Console.ReadKey(true).Key == ConsoleKey.DownArrow
-                System.Console.ReadKey(true).Key == ConsoleKey.LeftArrow
-                System.Console.ReadKey(true).Key == ConsoleKey.RightArrow
-                   Console.WriteLine("Cannot move Up");
-            
-
-         if
-            
-                (System.Console.ReadKey(true).Key == ConsoleKey.UpArrow)
-                 Console.WriteLine("Cannot move Up");
-
-                else if
-
-                    (System.Console.ReadKey(true).Key == ConsoleKey.DownArrow)
-                 Console.WriteLine("Cannot move ");
-
-            else if
-
-                    (System.Console.ReadKey(true).Key == ConsoleKey.LeftArrow)
-                Console.WriteLine("Cannot move ");
-
-            else if
-
-                    (System.Console.ReadKey(true).Key == ConsoleKey.RightArrow)
-                Console.WriteLine("Cannot move ");
-
-            else
-               Console.WriteLine("Unknown option");
-
-
-
-                /*if (choice == 'Q' || choice == 'q')
-                //done = HandleQuit();
-                //if (choice == 'Q')
-                //    done = HandleQuit();
-                //else if (choice == 'A')
-                //    AddMovie();
-                //else if (choice == 'V')
-                //    ViewMovie();
-                //else if (choice == 'D')
-                //    DeleteMovie();
-                //else
-                //    Console.WriteLine("Unknown option");
-                switch (choice)
-                {
-                    case 'Q':
-                    {
-                        done = HandleQuit(); break;
-                    };
-                    case 'A': AddMovie(); break;
-                    case 'V': ViewMovie(); break;
-                    case 'D': DeleteMovie(); break;
-                    default: DisplayError("Unknown Option"); break;
-                };
-            } while (!done);
-                */
 
     }
 }
+
+/*static void MoveNorth ()
+//Assume current position is x, y
+{
+    int newX = x, newY = y;
+    newY -= 1;
+}
+static void MoveSouth ()
+//Assume current position is x, y
+{
+    int newX = x, newY = y;
+    newY += 1;
+}
+static void MoveEast ()
+//Assume current position is x, y
+{
+    int newX = x, newY = y;
+    newY -= 1;
+}
+static void MoveWest ()
+//Assume current position is x, y
+{
+    int newX = x, newY = y;
+    newY += 1;
+}
+
+
+MoveSouth() newY += 1;
+MoveEast()newX -= 1;
+MoveWest()  newX += 1;
+//Assume current position is x, y
+int newX = x, newY = y;
