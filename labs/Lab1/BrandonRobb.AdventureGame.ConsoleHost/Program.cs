@@ -80,15 +80,15 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
 
         switch (roomNumber)
         {
-            case 1: rm1Dsrcpt("This room has a small boat inside but it is filled with water"); break;
-            case 2: rm2Dsrcpt("There is a key and a round object that could be used for a patch"); break;
-            case 3: rm3Dsrcpt("This room has a water pump, a key and a triangle hole in the wall pouring water into the room "); break;
-            case 4: rm4Dsrcpt("This is a empty room with 3 doors"); break;
-            case 5: rm5Dsrcpt("This is a empty room with 4 doors to walk through"); break;
-            case 6: rm6Dsrcpt("Nothing in here, 3 doors you can choose to go through"); break;
-            case 7: rm7Dsrcpt("There is a square hole in the wall leaking water, a triangle patch and a key"); break;
-            case 8: rm8Dsrcpt("Initial starting point.. with 3 doors and an empty table"); break;
-            case 9: rm9Dsrcpt("There is a round hole leaking water, a square patch and a key"); break;
+            case 1: rm1Dsrcpt(); break;
+            case 2: rm2Dsrcpt(); break;
+            case 3: rm3Dsrcpt(); break;
+            case 4: rm4Dsrcpt(); break;
+            case 5: rm5Dsrcpt(); break;
+            case 6: rm6Dsrcpt(); break;
+            case 7: rm7Dsrcpt(); break;
+            case 8: rm8Dsrcpt(); break;
+            case 9: rm9Dsrcpt(); break;
         }
 
 
@@ -154,6 +154,8 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
     }
 }
 
+
+
 /*static void MoveNorth ()
 //Assume current position is x, y
 {
@@ -185,3 +187,20 @@ MoveEast()newX -= 1;
 MoveWest()  newX += 1;
 //Assume current position is x, y
 int newX = x, newY = y;
+
+ static void FindRoomToDisplay ()
+    {
+        int roomNumber = currentX + (MaximumX * (currentY - 1));
+
+        switch (roomNumber)
+        {
+            case 1: rm1Dsrcpt("This room has a small boat inside but it is filled with water"); break;
+            case 2: rm2Dsrcpt("There is a key and a round object that could be used for a patch"); break;
+            case 3: rm3Dsrcpt("This room has a water pump, a key and a triangle hole in the wall pouring water into the room "); break;
+            case 4: rm4Dsrcpt("This is a empty room with 3 doors"); break;
+            case 5: rm5Dsrcpt("This is a empty room with 4 doors to walk through"); break;
+            case 6: rm6Dsrcpt("Nothing in here, 3 doors you can choose to go through"); break;
+            case 7: rm7Dsrcpt("There is a square hole in the wall leaking water, a triangle patch and a key"); break;
+            case 8: rm8Dsrcpt("Initial starting point.. with 3 doors and an empty table"); break;
+            case 9: rm9Dsrcpt("There is a round hole leaking water, a square patch and a key"); break;
+        }
