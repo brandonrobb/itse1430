@@ -24,8 +24,8 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             done = EnterShip("Would you like to try to escape the sinking ship (Y/N)? ");
             Console.Clear();
             FindRoomToDisplay();
-            Console.WriteLine("Which direction would you like to walk? \n To walk Press Button \n(N) for North," +
-                   " \n(S) for South,\n (E) for East or.. \n (W)for West? \n (H)for Help & (Q) to Quit ");
+            Console.WriteLine("Which direction would you like to walk? \n To walk Press Button \n (N) for North," +
+                   " \n (S) for South,\n (E) for East or.. \n (W)for West? \n (H)for Help & (Q) to Quit ");
 
             while (!done)
             {
