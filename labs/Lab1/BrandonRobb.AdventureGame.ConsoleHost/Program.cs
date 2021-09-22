@@ -5,110 +5,170 @@
  */
 
 using System;
-using System.Threading;
 
 namespace BrandonRobb.AdventureGame.ConsoleHost
-
 {
     class Program
     {
-        static int currentX;
-        static int currentY;
+        static int currentX = 1;
+        static int currentY = 2;
         const int MaximumX = 3;
+        const int MaximumY = 3;
+
+
         static void Main ( string[] args )
         {
-
             introPrompt();
 
             bool done = false;
-
-            //Handle quit isnt working
-            done = !ReadBoolean("Would you like to try to escape the ship (Y/N)? ");
-            currentX = 2;
-            currentY = 3;
-
-
-
-
+            done = EnterShip("Would you like to board the ship (Y/N)? ");
+            Console.Clear();
+            Console.WriteLine("Which direction would you like to walk? \n To walk Press Button \n(N) for North," +
+                   " \n(S) for South,\n (E) for East or.. \n (W)for West? \n (H)for Help & (Q) to Quit ");
+            //Console.Clear();
             while (!done)
             {
-
-
-                //need to implement controls and mapping
-                FindRoomToDisplay();
-                Console.WriteLine("What do you want to do?\n Walk (N)orth, (S)outh, (E)ast or (W)est? ");
-                string input = Console.ReadLine().Trim();
                 
+                string input = Console.ReadLine().Trim();
+
                 //case insensitive
                 switch (input.ToUpper())
                 {   //No fallthrough must  
                     // must end in break or return
 
                     case "n":
-                    case "N": MoveNorth(); break;//Later...Cant Access room 3 locked
+                    case "N":
+                    moveFuction('N', currentX, currentY);
+                    FindRoomToDisplay();
+                    Console.WriteLine("To walk press N,S,E or W" +
+                    "\n Press (H)for Help & (Q) to Quit ");
+                    break;//Later...Cant Access room 3 locked
+
                     case "s":
-                    case "S": MoveSouth(); break;
+                    case "S":
+                    moveFuction('S', currentX, currentY);
+                    FindRoomToDisplay();
+                    Console.WriteLine("To walk press N,S,E or W" +
+                    "\n Press (H)for Help & (Q) to Quit ");
+                    break;
+
                     case "e":
-                    case "E": MoveEast(); break;
+                    case "E":
+                    moveFuction('E', currentX, currentY);
+                    FindRoomToDisplay();
+                    Console.WriteLine("To walk press N,S,E or W" +
+                    "\n Press (H)for Help & (Q) to Quit ");
+                    break;
+
                     case "w":
-                    case "W": MoveWest(); break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
+                    case "W":
+                    moveFuction('W', currentX, currentY);
+                    FindRoomToDisplay();
+                    Console.WriteLine("To walk press N,S,E or W" +
+                    "\n Press (H)for Help & (Q) to Quit ");
+                    break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
+
                     case "h":
-                    case "H": help(); break;
-                    case "i":
-                    case "I": FindRoomToDisplay(); break;//Inspect
-                    case "d":
-                    case "D": done = HandleQuit("Are you sure you want to quit (Y/N)? "); break;
+                    case "H": help();
+                    break;
+                    //case "i":
+                    //case "I": FindRoomToDisplay(); break;//Inspect
+                    case "q":
+                    case "Q": done = HandleQuit("Are you sure you want to quit (Y/N)? ");
+                    break;
                 }
 
+                
+
+
+
+                //done = HandleQuit("Are you sure you want to quit (Y/N)? ");
 
             }
-
+            //Console.ReadLine();
             Console.Clear();
-            background();
-            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tSorry, you drowned on the ship...");
+            Console.WriteLine("\nYou Drowned on the ship!\n");
             Console.ReadLine();
             Console.Clear();
         }   //end main
 
-
-      
-
-}
-    static void FindRoomToDisplay ()
-    {
-        int roomNumber = currentX + (MaximumX * (currentY - 1));
-
-        switch (roomNumber)
+        static void help ()
         {
-            case 1: rm1Dsrcpt(); break;
-            case 2: rm2Dsrcpt(); break;
-            case 3: rm3Dsrcpt(); break;
-            case 4: rm4Dsrcpt(); break;
-            case 5: rm5Dsrcpt(); break;
-            case 6: rm6Dsrcpt(); break;
-            case 7: rm7Dsrcpt(); break;
-            case 8: rm8Dsrcpt(); break;
-            case 9: rm9Dsrcpt(); break;
+            Console.WriteLine("To walk press N,S,E or W \n  (N)orth, (S)outh, (E)ast or (W)est?\n" +
+                "To Quit press Q");
+        }
+        static void moveFuction ( char direction, int x, int y )
+        {
+            int newX = x, newY = y;
+            switch (direction)
+            {
+                case 'N': newY -= 1; break;
+                case 'S': newY += 1; break;
+                case 'W': newX -= 1; break;
+                case 'E': newX += 1; break;
+            }
+            if (newX >= 0 && newX < MaximumX && newY >= 0 && newY < MaximumY)
+            {
+                currentX = newX;
+                currentY = newY;
+                Console.WriteLine("Current position: " + currentX+ " , " + currentY);
+                
+            } else Console.WriteLine("Room doesnt exist, try again!");
         }
 
+        /// <summary>
+        /// ////////////////////////////////////Need Helpppppppppppppppppppp Below With Display Function
+        /// </summary>
+        //{
+
+        //}
+
+        static void FindRoomToDisplay ( )
+       {
+           int roomNumber = currentX + (MaximumX * (currentY - 1));
+
+           switch (roomNumber)
+           {
+                case '1': Console.WriteLine("1"); break;
+                case '2': Console.WriteLine("2"); break;
+                case '3': Console.WriteLine("3"); break;
+                case '4': Console.WriteLine("4"); break;
+                case '5': Console.WriteLine("5"); break;
+                case '6': Console.WriteLine("6"); break;
+                case '7': Console.WriteLine("7"); break;
+                case '8': Console.WriteLine("8"); break;
+                case '9': Console.WriteLine("9"); break;
+
+                
+            };
+       }
+        
+        
 
         private static bool HandleQuit ( string message )
         {
             //Display a confirmation
             if (ReadBoolean(message))
                 return true;
-
-
             return false;
 
-
-            //Shortcut of below code, preferred
-            //return ReadBoolean("Are you sure you want to quit (Y/N)? ");
         }
+
+
+        private static bool EnterShip ( string message )
+        {
+            //Display a confirmation
+            if (ReadBoolean(message))
+                return false;
+
+            return true;
+
+        }
+
+
         private static bool ReadBoolean ( string message )
         {
             Console.Write(message);
-
 
             do
             {
@@ -124,83 +184,97 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             //return false;
         }
 
+
         static void introPrompt ()
         {
             Console.WriteLine(" You have awoken from your long nights rest, suprisingly to find yourself stranded " +
                    " on a sinking cruise ship. \n Search the rooms of the ship to find " +
-                   "materials to patch the holes in the ship located in 3 different rooms. \n " +
-                   "Then after, you will be able to board the auxilary life boat to escape! ");
+                   "materials to patch the holes in the ship walls,\n located in 3 of the 9 different rooms. " +
+                   "Then after, you will be able to board \n the auxilary life boat to escape!\n" +
+                   " Press Enter ");
 
             Console.ReadLine();
             Console.Clear();
         }
 
-        static void background ()
+        /* string enterGame = Console.ReadLine();
+if enterGame = ("YES")
+*/
+
+        static void Lv1PromptA ()
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            //Console.ResetColor();
-            //Console.ReadLine();
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Find a round patch and a door key");
+            Console.ReadLine();
+            Console.Clear();
         }
 
+        static void Lv1PromptB ()
+        {
+            Console.WriteLine("Take the round patch and key to room 9 and patch the hole!");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
+        static void Lv2PromptA ()
+        {
+            Console.WriteLine("Great Job!");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
-           else
-            Console.WriteLine("Unknown option");
+        static void Lv2PromptB ()
+        {
+            Console.WriteLine("Take the square wood patch and key and find the next hole to patch");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
+        static void Lv3PromptA ()
+        {
+            Console.WriteLine("You did it!");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
+        static void Lv3PromptB ()
+        {
+            Console.WriteLine("Take the triangle weld patch and key and find the next hole to patch");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        static void Lv4PromptA ()
+        {
+            Console.WriteLine("Great Work!");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        static void Lv4PromptB ()
+        {
+            Console.WriteLine("Take the key and water pump to the last room. \n" +
+                " unlock the room and pump the water out  ");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        static void Lv5PromptA ()
+        {
+            Console.WriteLine("The water is pumping out, aboard the auxilary boat to save your assets!");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        static void Lv5PromptB ()
+        {
+            Console.WriteLine("You did it, you escaped from the sinking ship!");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
 
 
     }
 }
-
-
-
-/*static void MoveNorth ()
-//Assume current position is x, y
-{
-    int newX = x, newY = y;
-    newY -= 1;
-}
-static void MoveSouth ()
-//Assume current position is x, y
-{
-    int newX = x, newY = y;
-    newY += 1;
-}
-static void MoveEast ()
-//Assume current position is x, y
-{
-    int newX = x, newY = y;
-    newY -= 1;
-}
-static void MoveWest ()
-//Assume current position is x, y
-{
-    int newX = x, newY = y;
-    newY += 1;
-}
-
-
-MoveSouth() newY += 1;
-MoveEast()newX -= 1;
-MoveWest()  newX += 1;
-//Assume current position is x, y
-int newX = x, newY = y;
-
- static void FindRoomToDisplay ()
-    {
-        int roomNumber = currentX + (MaximumX * (currentY - 1));
-
-        switch (roomNumber)
-        {
-            case 1: rm1Dsrcpt("This room has a small boat inside but it is filled with water"); break;
-            case 2: rm2Dsrcpt("There is a key and a round object that could be used for a patch"); break;
-            case 3: rm3Dsrcpt("This room has a water pump, a key and a triangle hole in the wall pouring water into the room "); break;
-            case 4: rm4Dsrcpt("This is a empty room with 3 doors"); break;
-            case 5: rm5Dsrcpt("This is a empty room with 4 doors to walk through"); break;
-            case 6: rm6Dsrcpt("Nothing in here, 3 doors you can choose to go through"); break;
-            case 7: rm7Dsrcpt("There is a square hole in the wall leaking water, a triangle patch and a key"); break;
-            case 8: rm8Dsrcpt("Initial starting point.. with 3 doors and an empty table"); break;
-            case 9: rm9Dsrcpt("There is a round hole leaking water, a square patch and a key"); break;
-        }
