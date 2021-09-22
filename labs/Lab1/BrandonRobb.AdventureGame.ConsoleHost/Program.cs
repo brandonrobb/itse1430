@@ -26,22 +26,22 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             FindRoomToDisplay();
             Console.WriteLine("Which direction would you like to walk? \n To walk Press Button \n(N) for North," +
                    " \n(S) for South,\n (E) for East or.. \n (W)for West? \n (H)for Help & (Q) to Quit ");
-           
+
             while (!done)
             {
 
                 string input = Console.ReadLine().Trim();
-                               
+
                 switch (input.ToUpper())
-                {   
+                {
                     case "n":
                     case "N":
                     Console.Clear();
                     moveFuction('N', s_currentX, s_currentY);
                     FindRoomToDisplay();
                     Console.WriteLine("To walk press N,S,E or W" +
-                    "\n Press (H)for Help & (Q) to Quit ");
-                    break;//Later...Cant Access room 3 locked
+                    "\n Press (H) for Help \n Press (I) to Inspect Room \n & (Q) to Quit  ");
+                    break;
 
                     case "s":
                     case "S":
@@ -49,7 +49,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                     moveFuction('S', s_currentX, s_currentY);
                     FindRoomToDisplay();
                     Console.WriteLine("To walk press N,S,E or W" +
-                    "\n Press (H)for Help & (Q) to Quit ");
+                    "\n Press (H) for Help \n Press (I) to Inspect Room \n & (Q) to Quit  ");
                     break;
 
                     case "e":
@@ -58,7 +58,7 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                     moveFuction('E', s_currentX, s_currentY);
                     FindRoomToDisplay();
                     Console.WriteLine("To walk press N,S,E or W" +
-                    "\n Press (H)for Help & (Q) to Quit ");
+                    "\n Press (H) for Help \n Press (I) to Inspect Room \n & (Q) to Quit ");
                     break;
 
                     case "w":
@@ -67,16 +67,23 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                     moveFuction('W', s_currentX, s_currentY);
                     FindRoomToDisplay();
                     Console.WriteLine("To walk press N,S,E or W" +
-                    "\n Press (H)for Help & (Q) to Quit ");
-                    break; //Later.. Console.Write("Room 1 is locked, find key to unlock");
+                    "\n Press (H) for Help \n Press (I) to Inspect Room \n & (Q) to Quit  ");
+                    break;
+
+                    case "i":
+                    case "I":
+                    Console.Clear();
+                    FindRoomToDisplay();
+                    Console.WriteLine("To walk press N,S,E or W" +
+                    "\n Press (H) for Help and \n (Q) to Quit  ");
+                    break;
 
                     case "h":
                     case "H":
                     Console.Clear();
                     help();
                     break;
-                    //case "i":
-                    //case "I": FindRoomToDisplay(); break;//Inspect
+
                     case "q":
                     case "Q":
                     Console.Clear();
@@ -89,12 +96,12 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
             Console.WriteLine("\nYou Drowned on the ship!\n");
             Console.ReadLine();
             Console.Clear();
-        }   
+        }
 
         static void help ()
         {
-            Console.WriteLine("To walk press N,S,E or W \n  (N)orth, (S)outh, (E)ast or (W)est?\n" +
-                "To Quit press Q");
+            Console.WriteLine("To walk press (N),(S),(E) or (W).. \n  (N)orth, (S)outh, (E)ast or (W)est?\n" +
+                " To Quit press (Q) \n To get room description press (I)");
         }
 
         static void moveFuction ( char direction, int x, int y )
