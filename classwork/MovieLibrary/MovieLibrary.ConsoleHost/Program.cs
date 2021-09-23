@@ -47,16 +47,20 @@ namespace MovieLibrary.ConsoleHost
             } while (!done);
         }
 
-        static Movie movie = new Movie();
+        static Movie movie; // = new Movie();
 
         private static void DeleteMovie ()
         {
+            if (movie == null)
+                return;
+            //var newMovie = movie.Copy();
+
             //Confirm
             if (!ReadBoolean("Are you sure (Y/N)? "))
                 return;
 
             //TODO: delete movie
-            movie.title = null;
+            movie = null;
 
             
         }
@@ -65,22 +69,39 @@ namespace MovieLibrary.ConsoleHost
 
         static void AddMovie ()
         {
-            //Movie details - ignoring warnings for now...
-            movie.title = ReadString("Enter the movie title: ", true);
-            movie.description = ReadString("Enter the optional description: ", false);
+            var newMovie = new Movie();
 
-            movie.runLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
-            movie.releaseYear = ReadInt32("Enter the release year (min 1900): ", 1900); //1900+
+            do
+            {
+                //Movie details - ignoring warnings for now...
+                newMovie.title = ReadString("Enter the movie title: ", true);
+                newMovie.description = ReadString("Enter the optional description: ", false);
 
-            //double reviewRating;  //Optional, 0.0 to 5.0
-            movie.rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
-            movie.isClassic = ReadBoolean("Is this a classic (Y/N)? ");       //Optional
+                newMovie.runLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
+                newMovie.releaseYear = ReadInt32("Enter the release year (min 1900): ", newMovie.MinimumReleaseYear); //1900+
+
+                //double reviewRating;  //Optional, 0.0 to 5.0
+                newMovie.rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
+                newMovie.isClassic = ReadBoolean("Is this a classic (Y/N)? ");       //Optional
+
+                //Validate
+                var error = newMovie.Validate();
+                if (!String.IsNullOrEmpty(error))
+                {
+                    movie = newMovie;
+                    return;
+                };
+
+                    DisplayError(error);
+
+            }while(true);
         }
 
         static void ViewMovie ()
         {
             //TODO: What if they haven't added one yet?
-            if (String.IsNullOrEmpty(movie.title))
+           // if (String.IsNullOrEmpty(movie.title))
+           if (movie == null)
             {
                 Console.WriteLine("No movie available");
                 return;
@@ -124,7 +145,12 @@ namespace MovieLibrary.ConsoleHost
             //Not needed anymore
             //return false;
         }
-
+        /// <summary>
+        /// Reads an Int 32 from the console.
+        /// </summary>
+        /// <param name="message">The message to display.</param>
+        /// <param name="minimumValue">The minimum value allowed.</param>
+        /// <returns></returns>The integral value that was entered.
         static int ReadInt32 ( string message, int minimumValue )
         {
             Console.Write(message);

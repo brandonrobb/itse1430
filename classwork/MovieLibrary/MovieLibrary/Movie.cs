@@ -23,5 +23,49 @@ namespace MovieLibrary
         public double reviewRating;
         public string rating;
         public bool isClassic;
+
+        public const int MinimumReleaseYear = 1900; //Read Only
+
+        //Methods - provide fuctionality (function inside a class)
+        // Can ref. fields in methods
+
+        /// <summary>
+        /// Copies the movie.
+        /// </summary>
+        /// <returns>a copy of the movie.</returns>
+
+        public Movie Copy ()
+        {
+            var movie = new Movie();
+            movie.title = title;
+            movie.description = description;
+            movie.runLength = runLength;
+            movie.releaseYear = releaseYear;
+            movie.rating = rating;
+            movie.isClassic = isClassic;
+
+            return movie;
+        }
+
+        public string Validate ()
+        {
+            //Name is required
+            if (String.IsNullOrEmpty(title))
+                return "Title is required";
+
+            //Runlength >= 0
+            if (runLength < 0)
+                return "Run length must be at least zero";
+
+            //Released year >= 1900
+            if (releaseYear < MinimumReleaseYear)
+                return "Release Year must be at least " + MinimumReleaseYear;
+            return null;
+        }
+
+        private void SetDescriptionToTitle ()
+        {
+            description = title;
+        }
     }
 }
