@@ -28,21 +28,21 @@ namespace CharacterCreator.ConsoleHost
                         done = HandleQuit();
                         break;
                     };
-                    case 'A': AddMovie(); break;
-                    case 'V': ViewMovie(); break;
-                    case 'D': DeleteMovie(); break;
+                    case 'A': AddCharacter(); break;
+                    case 'V': ViewCharacter(); break;
+                    case 'D': DeleteCharacter(); break;
                     default: DisplayError("Unknown option"); break;
                 };
             } while (!done);
         }
 
         //Using null to represent no movie yet
-        static Movie movie; // = new Movie();
+        static Character character; // = new Movie();
 
         /// <summary>Deletes the movie, if any.</summary>
-        private static void DeleteMovie ()
+        private static void DeleteCharacter ()
         {
-            if (movie == null)
+            if (character == null)
                 return;
 
             //var newMovie = movie.Copy();
@@ -52,34 +52,34 @@ namespace CharacterCreator.ConsoleHost
                 return;
 
             //TODO: Delete movie
-            movie = null;
+            character = null;
         }
 
         /// <summary>Adds a movie.</summary>
-        static void AddMovie ()
+        static void AddCharacter ()
         {
             //Store in a temp variable until validated
-            var newMovie = new Movie();
+            var newCharacter = new Character();
 
             do
             {
                 // newMovie.set_Title(...)
-                newMovie.Title = ReadString("Enter the movie title: ", false);
-                newMovie.Description = ReadString("Enter the optional description: ", false);
+                newCharacter.Title = ReadString("Enter the movie title: ", false);
+                newCharacter.Description = ReadString("Enter the optional description: ", false);
 
-                newMovie.RunLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
-                newMovie.ReleaseYear = ReadInt32("Enter the release year (min 1900): ", Movie.MinimumReleaseYear); //1900+
+                newCharacter.RunLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
+                newCharacter.ReleaseYear = ReadInt32("Enter the release year (min 1900): ", Character.MinimumReleaseYear); //1900+
 
                 //double reviewRating;  //Optional, 0.0 to 5.0
-                newMovie.Rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
-                newMovie.IsClassic = ReadBoolean("Is this a classic (Y/N)? ");       //Optional
+                newCharacter.Rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
+                newCharacter.IsClassic = ReadBoolean("Is this a classic (Y/N)? ");       //Optional
 
                 //Validate
-                var error = newMovie.Validate();
+                var error = newCharacter.Validate();
                 if (String.IsNullOrEmpty(error))
                 {
                     //TODO: Save movie
-                    movie = newMovie;
+                    character = newCharacter;
                     return;
                 };
 
@@ -88,25 +88,25 @@ namespace CharacterCreator.ConsoleHost
         }
 
         /// <summary>Displays the entered movie.</summary>
-        static void ViewMovie ()
+        static void ViewCharacter ()
         {
             //What if they haven't added one yet?
             //if (String.IsNullOrEmpty(movie.title))
-            if (movie == null)
+            if (character == null)
             {
                 Console.WriteLine("No movie available");
                 return;
             };
 
             //movie.get_Title()
-            Console.WriteLine($"{movie.Title} ({movie.ReleaseYear})");
-            Console.WriteLine($"Runtime: {movie.RunLength} mins");
-            Console.WriteLine($"MPAA Rating {movie.Rating}");
-            Console.WriteLine($"Classic? {movie.IsClassic}");
-            Console.WriteLine(movie.Description);
+            Console.WriteLine($"{character.Title} ({character.ReleaseYear})");
+            Console.WriteLine($"Runtime: {character.RunLength} mins");
+            Console.WriteLine($"MPAA Rating {character.Rating}");
+            Console.WriteLine($"Classic? {character.IsClassic}");
+            Console.WriteLine(character.Description);
 
-            if (movie.AgeInYears >= 25)
-                Console.WriteLine($"{movie.AgeInYears}th Anniversary");
+            if (character.AgeInYears >= 25)
+                Console.WriteLine($"{character.AgeInYears}th Anniversary");
             //movie.AgeInYears = 10;
         }
 

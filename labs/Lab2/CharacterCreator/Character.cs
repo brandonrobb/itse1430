@@ -121,9 +121,9 @@ namespace CharacterCreator
 
         /// <summary>Copies the movie.</summary>
         /// <returns>A copy of the movie.</returns>
-        public Movie Copy ()
+        public Character Copy ()
         {
-            var movie = new Movie();
+            var movie = new Character();
             movie.Title = Title;
             movie.Description = Description;
             movie.RunLength = RunLength;
