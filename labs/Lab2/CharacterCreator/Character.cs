@@ -1,14 +1,8 @@
 ﻿using System;
-//Business Layer
-namespace MovieLibrary
-{
-    //Naming rules for class
-    // 1. Pascal cased
-    // 2. Never prefix with T, C or anything else
-    // 3. Noun - because they represent an object/entity in your system
 
-    /// <summary>Represents a movie.</summary>
-    public class Movie
+namespace CharacterCreator
+{
+    public class Character
     {
         //Mixed accessibility - one accessor may be more restrictive
         //public int Id { get; private set; }

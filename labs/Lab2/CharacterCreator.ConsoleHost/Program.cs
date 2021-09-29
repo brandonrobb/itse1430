@@ -1,8 +1,14 @@
-﻿// ITSE 1430
-// Movie Library
+﻿/*
+ * FILE HEADER
+ * ITSE 1430 FALL 2021
+ * BRANDON ROBB
+ */
+
 using System;
 //User Interface
-namespace MovieLibrary.ConsoleHost
+namespace CharacterCreator.ConsoleHost
+
+
 {
     //Main program
     class Program

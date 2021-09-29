@@ -89,6 +89,8 @@ namespace BrandonRobb.AdventureGame.ConsoleHost
                     Console.Clear();
                     done = HandleQuit("Are you sure you want to quit (Y/N)? ");
                     break;
+
+                    default: Console.WriteLine("Invalid Key"); help(); break;
                 }
             }
 
