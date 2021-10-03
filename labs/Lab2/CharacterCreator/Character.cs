@@ -58,7 +58,7 @@ namespace CharacterCreator
         // //////   set { _runLength = value; }
         /////}
         //Auto property
-        public int StrengthLevel { get; set;}
+        public int StrengthLevel { get; set; }
         public int Intelligence { get; set; }
         public int Agility { get; set; }
         public int Constitution { get; set; }
@@ -143,14 +143,18 @@ namespace CharacterCreator
         public Character Copy ()
         {
             var character = new Character();
-           character.Name = Name;
-           character.Biography = Biography;
-           character.Profession = Profession;
-           character.StrengthLevel = StrengthLevel;
-           character.ReleaseYear = ReleaseYear;
-           character.ReviewRating = ReviewRating;
-           character.Race = Race;
-           character.IsClassic = IsClassic;
+            character.Name = Name;
+            character.Biography = Biography;
+            character.Profession = Profession;
+            character.StrengthLevel = StrengthLevel;
+            character.Intelligence = Intelligence;
+            character.Agility = Agility;
+            character.Constitution = Constitution;
+            character.Charisma = Charisma;
+            character.ReleaseYear = ReleaseYear;
+            character.ReviewRating = ReviewRating;
+            character.Race = Race;
+            character.IsClassic = IsClassic;
 
             return character;
         }
@@ -171,7 +175,7 @@ namespace CharacterCreator
 
             //Run length >= 0
             //if (this.runLength < 0)
-            if ( (StrengthLevel) < 0 && (StrengthLevel) > 100)
+            if ((StrengthLevel) < 0 && (StrengthLevel) > 100)
                 return "Strength Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
             if ((Intelligence) < 0 && (Intelligence) > 100)

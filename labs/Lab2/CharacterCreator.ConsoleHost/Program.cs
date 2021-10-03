@@ -62,12 +62,12 @@ namespace CharacterCreator.ConsoleHost
             //Store in a temp variable until validated
             var newCharacter = new Character();
 
-            
+
 
             do
             {
                 // newMovie.set_Title(...)
-                newCharacter.Name = ReadString("Enter the character name: ", false) ; 
+                newCharacter.Name = ReadString("Enter the character name: ", false);
                 newCharacter.Biography = ReadString("Enter short character biography (optional): ", false);
 
 
@@ -100,11 +100,11 @@ namespace CharacterCreator.ConsoleHost
                     break;
 
                 }
-                
-                
+
+
                 newCharacter.Race = ReadString("Enter character race:  " +
-                    "Froggler, Doggler, Hoggler, Snakemen, Martian \n", false); 
-                                                                                 
+                    "Froggler, Doggler, Hoggler, Snakemen, Martian \n", false);
+
                 switch (newCharacter.Race.ToUpper())
                 {
                     //case "fighter":
@@ -177,11 +177,11 @@ namespace CharacterCreator.ConsoleHost
             Console.WriteLine($"Charisma: {s_character.Charisma} ");
             //Console.WriteLine($"MPAA Rating {character.Race}");
             //Console.WriteLine($"Classic? {character.IsClassic}");
-            
-            
 
-           // if (character.AgeInYears >= 25)
-             //   Console.WriteLine($"{character.AgeInYears}th Anniversary");
+
+
+            // if (character.AgeInYears >= 25)
+            //   Console.WriteLine($"{character.AgeInYears}th Anniversary");
             //movie.AgeInYears = 10;
         }
 
