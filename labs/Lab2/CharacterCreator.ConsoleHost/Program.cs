@@ -29,6 +29,7 @@ namespace CharacterCreator.ConsoleHost
                         break;
                     };
                     case 'A': AddCharacter(); break;
+                    case 'E': EditCharacter(); break;
                     case 'V': ViewCharacter(); break;
                     case 'D': DeleteCharacter(); break;
                     default: DisplayError("Unknown option"); break;
@@ -37,12 +38,12 @@ namespace CharacterCreator.ConsoleHost
         }
 
         //Using null to represent no movie yet
-        static Character character; // = new Movie();
+        static Character s_character; // = new Movie();
 
         /// <summary>Deletes the movie, if any.</summary>
         private static void DeleteCharacter ()
         {
-            if (character == null)
+            if (s_character == null)
                 return;
 
             //var newMovie = movie.Copy();
@@ -52,7 +53,7 @@ namespace CharacterCreator.ConsoleHost
                 return;
 
             //TODO: Delete movie
-            character = null;
+            s_character = null;
         }
 
         /// <summary>Adds a movie.</summary>
@@ -61,25 +62,91 @@ namespace CharacterCreator.ConsoleHost
             //Store in a temp variable until validated
             var newCharacter = new Character();
 
+            
+
             do
             {
                 // newMovie.set_Title(...)
-                newCharacter.Title = ReadString("Enter the movie title: ", false);
-                newCharacter.Description = ReadString("Enter the optional description: ", false);
+                newCharacter.Name = ReadString("Enter the character name: ", false) ; 
+                newCharacter.Biography = ReadString("Enter short character biography (optional): ", false);
 
-                newCharacter.RunLength = ReadInt32("Enter run length (in minutes): ", 0); // >= 0
-                newCharacter.ReleaseYear = ReadInt32("Enter the release year (min 1900): ", Character.MinimumReleaseYear); //1900+
 
-                //double reviewRating;  //Optional, 0.0 to 5.0
-                newCharacter.Rating = ReadString("Enter the MPAA rating: ", false); //MPAA (not enforced)
-                newCharacter.IsClassic = ReadBoolean("Is this a classic (Y/N)? ");       //Optional
+                newCharacter.Profession = ReadString("Enter character profession: " +
+                    "Phychologist, Doctor, Contractor, Athlete, Singer\n", false);
+
+
+                switch (newCharacter.Profession.ToUpper())
+                {
+                    //case "fighter":
+                    case "PSYCHOLOGIST":
+                    break;
+
+                    case "DOCTOR":
+                    break;
+
+                    case "CONTRACTOR":
+                    break;
+
+                    case "ATHLETE":
+                    break;
+
+                    case "SINGER":
+                    break;
+
+                    default:
+                    DisplayError("Invalid Profession! Profession must be one of the following:\n" +
+                        "PSYCHOLOGIST, DOCTOR, CONTRACTOR, ATHLETE, SINGER.");
+                    newCharacter.Profession = ReadString("Enter the character profession: ", false);
+                    break;
+
+                }
+                
+                
+                newCharacter.Race = ReadString("Enter character race:  " +
+                    "Froggler, Doggler, Hoggler, Snakemen, Martian \n", false); 
+                                                                                 
+                switch (newCharacter.Race.ToUpper())
+                {
+                    //case "fighter":
+                    case "FROGGLER":
+                    break;
+
+                    case "DOGGLER":
+                    break;
+
+                    case "HOGGLER":
+                    break;
+
+                    case "SNAKEMEN":
+                    break;
+
+                    case "MARTIAN":
+                    break;
+
+                    default:
+                    DisplayError("Invalid Race! Race must be one of the following:\n" +
+                        "FROGGLER, DOGGLER, HOGGLER, SNAKEMEN, MARTIAN.");
+                    newCharacter.Race = ReadString("Enter the character Race: ", false);
+                    break;
+
+                }
+
+                newCharacter.StrengthLevel = ReadInt32("Enter a strength level for you character (1-100): ", 1, 100);
+
+                newCharacter.Intelligence = ReadInt32("Enter a intelligence level for you character (1-100): ", 1, 100);
+
+                newCharacter.Agility = ReadInt32("Enter a agility level for you character (1-100): ", 1, 100);
+
+                newCharacter.Constitution = ReadInt32("Enter a constitution level for you character (1-100): ", 1, 100);
+
+                newCharacter.Charisma = ReadInt32("Enter a constitution level for you character (1-100): ", 1, 100);
 
                 //Validate
                 var error = newCharacter.Validate();
                 if (String.IsNullOrEmpty(error))
                 {
                     //TODO: Save movie
-                    character = newCharacter;
+                    s_character = newCharacter;
                     return;
                 };
 
@@ -92,23 +159,38 @@ namespace CharacterCreator.ConsoleHost
         {
             //What if they haven't added one yet?
             //if (String.IsNullOrEmpty(movie.title))
-            if (character == null)
+            if (s_character == null)
             {
-                Console.WriteLine("No movie available");
+                Console.WriteLine("No character available");
                 return;
             };
 
             //movie.get_Title()
-            Console.WriteLine($"{character.Title} ({character.ReleaseYear})");
-            Console.WriteLine($"Runtime: {character.RunLength} mins");
-            Console.WriteLine($"MPAA Rating {character.Rating}");
-            Console.WriteLine($"Classic? {character.IsClassic}");
-            Console.WriteLine(character.Description);
+            Console.WriteLine($"{s_character.Name}");
+            Console.WriteLine(s_character.Profession);
+            Console.WriteLine(s_character.Biography);
+            Console.WriteLine($"Race: {s_character.Race}");
+            Console.WriteLine($"Strength Level: {s_character.StrengthLevel} ");
+            Console.WriteLine($"Intelligence: {s_character.Intelligence} ");
+            Console.WriteLine($"Agility: {s_character.Agility} ");
+            Console.WriteLine($"Constitution: {s_character.Constitution} ");
+            Console.WriteLine($"Charisma: {s_character.Charisma} ");
+            //Console.WriteLine($"MPAA Rating {character.Race}");
+            //Console.WriteLine($"Classic? {character.IsClassic}");
+            
+            
 
-            if (character.AgeInYears >= 25)
-                Console.WriteLine($"{character.AgeInYears}th Anniversary");
+           // if (character.AgeInYears >= 25)
+             //   Console.WriteLine($"{character.AgeInYears}th Anniversary");
             //movie.AgeInYears = 10;
         }
+
+        static void EditCharacter ()
+        {
+            ViewCharacter();
+            AddCharacter();
+        }
+
 
         /// <summary>Handles quit logic.</summary>
         /// <returns>true to quit the program.</returns>
@@ -142,7 +224,7 @@ namespace CharacterCreator.ConsoleHost
         /// <param name="message">The message to display.</param>
         /// <param name="minimumValue">The minimum value allowed.</param>
         /// <returns>The integrval value that was entered.</returns>
-        static int ReadInt32 ( string message, int minimumValue )
+        static int ReadInt32 ( string message, int minimumValue, int maximumValue )
         {
             Console.Write(message);
 
@@ -151,10 +233,10 @@ namespace CharacterCreator.ConsoleHost
             {
                 var input = Console.ReadLine();
 
-                if (Int32.TryParse(input, out var result) && result >= minimumValue)
+                if (Int32.TryParse(input, out var result) && result >= minimumValue && result <= maximumValue)
                     return result;
 
-                DisplayError("The value must be an integral value >= " + minimumValue);
+                DisplayError("The value must be an integral value between " + minimumValue +" - " + maximumValue);
             } while (true);
         }
 
@@ -191,10 +273,11 @@ namespace CharacterCreator.ConsoleHost
         /// <returns>The selected option.</returns>
         static char GetInput ()
         {
-            Console.WriteLine("Movie Library");
+            Console.WriteLine("Create Character");
             Console.WriteLine("".PadLeft(15, '-'));
 
             Console.WriteLine("A) dd");
+            Console.WriteLine("E) dit");
             Console.WriteLine("V) iew");
             Console.WriteLine("D) elete");
             Console.WriteLine("Q) uit");
@@ -205,7 +288,7 @@ namespace CharacterCreator.ConsoleHost
                 string input = Console.ReadLine().Trim();
                 switch (input.ToUpper())
                 {
-                    case "C": return 'B';
+                    case "E": return 'E';
                     case "Q": return 'Q';
                     case "A": return 'A';
                     case "V": return 'V';
@@ -217,3 +300,4 @@ namespace CharacterCreator.ConsoleHost
         }
     }
 }
+

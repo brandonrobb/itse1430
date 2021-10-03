@@ -14,11 +14,11 @@ namespace CharacterCreator
         //   Property has a getter to read the value and a setter to write the value
         //   Getter must return a value of property type
         //   Setter has a single parameter called `value` of property type
-        public string Title
+        public string Name
         {
             //Read: T get_Title ()
             get {
-                return (_title != null) ? _title : "";
+                return (_name != null) ? _name : "";
                 //if (_title == null)
                 //    return "";
 
@@ -28,31 +28,42 @@ namespace CharacterCreator
             //Write void set_Title ( string value ) 
             set {
                 //_title = value;
-                _title = (value != null) ? value.Trim() : null;
+                _name = (value != null) ? value.Trim() : null;
             }
         }
 
         /// <summary>Gets or sets the description.</summary>
-        public string Description
+        public string Biography
         {
-            get { return (_description != null) ? _description : ""; }
-            set { _description = (value != null) ? value.Trim() : null; }
+            get { return (_biography != null) ? _biography : ""; }
+            set { _biography = (value != null) ? value.Trim() : null; }
         }
 
-        public string Rating
+        /// <summary>Gets or sets the description.</summary>
+        public string Profession
         {
-            get { return (_rating != null) ? _rating : ""; }
-            set { _rating = (value != null) ? value.Trim() : null; }
+            get { return (_profession != null) ? _profession : ""; }
+            set { _profession = (value != null) ? value.Trim() : null; }
+        }
+        public string Race
+        {
+            get { return (_race != null) ? _race : ""; }
+            set { _race = (value != null) ? value.Trim() : null; }
         }
 
         //Full property syntax
-        //public int RunLength
-        //{
-        //    get { return _runLength; }
-        //    set { _runLength = value; }
-        //}
+        /////////////////public int RunLength
+        ///////////{
+        //////////    get { return _runLength; }
+        // //////   set { _runLength = value; }
+        /////}
         //Auto property
-        public int RunLength { get; set; }
+        public int StrengthLevel { get; set;}
+        public int Intelligence { get; set; }
+        public int Agility { get; set; }
+        public int Constitution { get; set; }
+        public int Charisma { get; set; }
+
 
         //public int ReleaseYear
         //{
@@ -82,19 +93,27 @@ namespace CharacterCreator
         //  2. Should NEVER be public
         //  3. Always zero initialized or can default
         //  4. Cannot initialize to another field's value
-        private string _title;
-        private string _description;
-        //private int _runLength;
+        private string _name;
+        private string _biography;
+        private string _race;
+        private string _profession;
+        private int _strengthLevel;
+        private int _intelligence;
+        private int _agility;
+        private int _constitution;
+        private int _charisma;
 
         //TODO: Use the const Luke
         //private int _releaseYear = MinimumReleaseYear;
 
         //private double _reviewRating;
-        private string _rating;
+        //private string _rating;
         //private bool _isClassic;
 
         // Field is constant and therefore cannot be changed without recompiling
         public const int MinimumReleaseYear = 1900;
+        public const int MinimumAttribute = 0;
+        public const int MaximumAttribute = 100;
 
         //public int GetAgeInYears ()
         //{
@@ -123,16 +142,17 @@ namespace CharacterCreator
         /// <returns>A copy of the movie.</returns>
         public Character Copy ()
         {
-            var movie = new Character();
-            movie.Title = Title;
-            movie.Description = Description;
-            movie.RunLength = RunLength;
-            movie.ReleaseYear = ReleaseYear;
-            movie.ReviewRating = ReviewRating;
-            movie.Rating = Rating;
-            movie.IsClassic = IsClassic;
+            var character = new Character();
+           character.Name = Name;
+           character.Biography = Biography;
+           character.Profession = Profession;
+           character.StrengthLevel = StrengthLevel;
+           character.ReleaseYear = ReleaseYear;
+           character.ReviewRating = ReviewRating;
+           character.Race = Race;
+           character.IsClassic = IsClassic;
 
-            return movie;
+            return character;
         }
 
         /// <summary>Validates the object.</summary>
@@ -140,13 +160,31 @@ namespace CharacterCreator
         public string Validate ( /* Movie this */ )
         {
             //Title is required
-            if (String.IsNullOrEmpty(Title)) // this.title            
-                return "Title is required";
+            if (String.IsNullOrEmpty(Name)) // this.title            
+                return "Name is required";
+
+            if (String.IsNullOrEmpty(Profession)) // this.title            
+                return "Profession is required";
+
+            if (String.IsNullOrEmpty(Race)) // this.title            
+                return "Race is required";
 
             //Run length >= 0
             //if (this.runLength < 0)
-            if (RunLength < 0)
-                return "Run Length must be at least zero";
+            if ( (StrengthLevel) < 0 && (StrengthLevel) > 100)
+                return "Strength Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+
+            if ((Intelligence) < 0 && (Intelligence) > 100)
+                return "Intelligence Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+
+            if ((Agility) < 0 && (Agility) > 100)
+                return "Agility Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+
+            if ((Constitution) < 0 && (Constitution) > 100)
+                return "Constitution Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+
+            if ((Charisma) < 0 && (Charisma) > 100)
+                return "Charisma Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
             //Release year >= 1900            
             if (ReleaseYear < MinimumReleaseYear)
@@ -157,7 +195,7 @@ namespace CharacterCreator
 
         private void SetDescriptionToTitle ()
         {
-            Description = Title;
+            Biography = Name;
         }
     }
 }
