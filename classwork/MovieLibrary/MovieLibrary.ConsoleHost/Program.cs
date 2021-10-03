@@ -208,6 +208,51 @@ namespace MovieLibrary.ConsoleHost
 
                 DisplayError("Invalid input");
             };
+
+            static void DemObjects ()
+            {
+                object someValue = 10;
+
+                someValue = "Hello";
+                Print(10);
+                Print("Hello");
+                Print(45.6);
+
+                //someValue.Equals(10);
+
+            }
+            static void Print (object value)
+
+            {
+                //Console.WriteLine(Value);
+                //Type checking
+                //is-operator ::= E is T (returns bool)
+                //as-operator ::= E is T (returns T or null), does not work with primitives
+                //pattern-matching ::= E is T id (returns E as T if valid or false otherwise)
+
+                //Type casting
+                // c-style ::= (T) E blows up at runtime if wrong, only use with primitives
+
+                if (value is int)
+                {
+                    Console.WriteLine((int)value);
+                    return;
+                };
+
+                string str = value as string;
+                if (str != null)
+                {
+                    Console.WriteLine(str);
+                    return;
+                }
+                //Best Choice returns boolean
+                if (value is double doubleValue)
+                {
+                    Console.WriteLine(doubleValue);
+                    return;
+                }
+
+            }
         }
     }
 }

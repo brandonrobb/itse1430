@@ -8,7 +8,7 @@ namespace MovieLibrary
     // 3. Noun - because they represent an object/entity in your system
 
     /// <summary>Represents a movie.</summary>
-    public class Movie
+    public class Movie 
     {
         //Mixed accessibility - one accessor may be more restrictive
         //public int Id { get; private set; }
@@ -22,9 +22,13 @@ namespace MovieLibrary
         //   Setter has a single parameter called `value` of property type
         public string Title
         {
+            //null coalescing ::= E??E (returns first non-null expression//)
+            //null conditional ::= E?.M (returns M?)
+
             //Read: T get_Title ()
             get {
-                return (_title != null) ? _title : "";
+                return _title ?? "";
+                //return (_title != null) ? _title : "";
                 //if (_title == null)
                 //    return "";
 
@@ -33,8 +37,12 @@ namespace MovieLibrary
 
             //Write void set_Title ( string value ) 
             set {
+                _title = value?.Trim();
                 //_title = value;
-                _title = (value != null) ? value.Trim() : null;
+                //_title = (value != null) ? value.Trim() : null;
+                // using null coalesce and null conditional to not interfere with data-type
+               // Movie m;
+               // int id = m?.Id ?? 0; //int?
             }
         }
 
@@ -140,6 +148,7 @@ namespace MovieLibrary
 
             return movie;
         }
+
 
         /// <summary>Validates the object.</summary>
         /// <returns>The error, if any.</returns>
