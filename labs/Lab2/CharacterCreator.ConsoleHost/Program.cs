@@ -67,12 +67,12 @@ namespace CharacterCreator.ConsoleHost
             do
             {
                 // newMovie.set_Title(...)
-                newCharacter.Name = ReadString("Enter the character name: ", false);
+                newCharacter.Name = ReadString("Enter the character name: ", true);
                 newCharacter.Biography = ReadString("Enter short character biography (optional): ", false);
 
 
                 newCharacter.Profession = ReadString("Enter character profession: " +
-                    "Phychologist, Doctor, Contractor, Athlete, Singer\n", false);
+                    "Phychologist, Doctor, Contractor, Athlete, Singer\n", true);
 
 
                 switch (newCharacter.Profession.ToUpper())
@@ -139,7 +139,7 @@ namespace CharacterCreator.ConsoleHost
 
                 newCharacter.Constitution = ReadInt32("Enter a constitution level for you character (1-100): ", 1, 100);
 
-                newCharacter.Charisma = ReadInt32("Enter a constitution level for you character (1-100): ", 1, 100);
+                newCharacter.Charisma = ReadInt32("Enter a charisma level for you character (1-100): ", 1, 100);
 
                 //Validate
                 var error = newCharacter.Validate();

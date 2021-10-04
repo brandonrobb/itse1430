@@ -175,24 +175,24 @@ namespace CharacterCreator
 
             //Run length >= 0
             //if (this.runLength < 0)
-            if ((StrengthLevel) < 0 && (StrengthLevel) > 100)
+            if ((StrengthLevel) < 0 || (StrengthLevel) > 100)
                 return "Strength Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
-            if ((Intelligence) < 0 && (Intelligence) > 100)
+            if ((Intelligence) < 0 || (Intelligence) > 100)
                 return "Intelligence Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
-            if ((Agility) < 0 && (Agility) > 100)
+            if ((Agility) < 0 || (Agility) > 100)
                 return "Agility Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
-            if ((Constitution) < 0 && (Constitution) > 100)
+            if ((Constitution) < 0 || (Constitution) > 100)
                 return "Constitution Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
-            if ((Charisma) < 0 && (Charisma) > 100)
+            if ((Charisma) < 0 || (Charisma) > 100)
                 return "Charisma Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
             //Release year >= 1900            
-            if (ReleaseYear < MinimumReleaseYear)
-                return "Release Year must be at least " + MinimumReleaseYear;
+           // if (ReleaseYear < MinimumReleaseYear)
+              //  return "Release Year must be at least " + MinimumReleaseYear;
 
             return null;
         }
