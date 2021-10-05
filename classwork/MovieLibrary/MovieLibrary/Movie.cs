@@ -10,6 +10,21 @@ namespace MovieLibrary
     /// <summary>Represents a movie.</summary>
     public class Movie 
     {
+        public Movie ()
+        { }
+        public Movie(string title) : this (0,title)
+        {
+            //Intialize(title) ;
+        //    Title = title;
+        }
+        // Constructor Chaining
+        public Movie (int id, string title) : this()
+
+        {
+            Id = id;
+           Title = title;
+        }
+
         //Mixed accessibility - one accessor may be more restrictive
         //public int Id { get; private set; }
         public int Id { get; } //private set ;

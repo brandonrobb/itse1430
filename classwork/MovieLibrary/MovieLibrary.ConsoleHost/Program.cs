@@ -53,7 +53,7 @@ namespace MovieLibrary.ConsoleHost
         static void AddMovie ()
         {
             //Store in a temp variable until validated
-            var newMovie = new Movie();
+            //var newMovie = new Movie(10,"temp");
 
             do
             {
