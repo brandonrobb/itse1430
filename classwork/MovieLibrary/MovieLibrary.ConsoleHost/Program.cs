@@ -1,7 +1,7 @@
 ﻿// ITSE 1430
 // Movie Library
 using System;
-//User Interface
+
 namespace MovieLibrary.ConsoleHost
 {
     //Main program
@@ -53,7 +53,10 @@ namespace MovieLibrary.ConsoleHost
         static void AddMovie ()
         {
             //Store in a temp variable until validated
-            //var newMovie = new Movie(10,"temp");
+            //var newMovie = new Movie();
+            var newMovie = new Movie(10, "temp");
+            //newMovie.Id = 10;
+            //newMovie.Title = "temp";
 
             do
             {
@@ -208,51 +211,72 @@ namespace MovieLibrary.ConsoleHost
 
                 DisplayError("Invalid input");
             };
+        }
 
-            static void DemObjects ()
+        static void DemoObjects ()
+        {
+            object someValue = 10;
+            someValue = "Hello";
+
+            Print(10);
+            Print("Hello");
+            Print(45.6);
+            //someValue.Equals(10);
+        }
+
+        static void Print ( object value )
+        {
+            //Console.WriteLine(value);
+
+            //Type checking
+            // is-operator ::= E is T (returns bool)
+            // as-operator ::= E as T (returns T or null), does not work with primitives
+            // pattern-matching ::= E is T id (returns bool with id as T if valid or false otherwise)
+
+            //Type casting
+            // c-style ::= (T) E blows up at runtime if wrong, only use with primitives
+
+            if (value is int)
             {
-                object someValue = 10;
+                Console.WriteLine((int)value);
+                return;
+            };
 
-                someValue = "Hello";
-                Print(10);
-                Print("Hello");
-                Print(45.6);
-
-                //someValue.Equals(10);
-
-            }
-            static void Print (object value)
-
+            string str = value as string;
+            if (str != null)
             {
-                //Console.WriteLine(Value);
-                //Type checking
-                //is-operator ::= E is T (returns bool)
-                //as-operator ::= E is T (returns T or null), does not work with primitives
-                //pattern-matching ::= E is T id (returns E as T if valid or false otherwise)
+                Console.WriteLine(str);
+                return;
+            };
 
-                //Type casting
-                // c-style ::= (T) E blows up at runtime if wrong, only use with primitives
+            //Best choice
+            if (value is double doubleValue)
+            {
+                Console.WriteLine(doubleValue);
+                return;
+            };
 
-                if (value is int)
-                {
-                    Console.WriteLine((int)value);
-                    return;
-                };
+            //int x;
 
-                string str = value as string;
-                if (str != null)
-                {
-                    Console.WriteLine(str);
-                    return;
-                }
-                //Best Choice returns boolean
-                if (value is double doubleValue)
-                {
-                    Console.WriteLine(doubleValue);
-                    return;
-                }
+            //if (x == null)
 
-            }
+            //Value types follow value assignment (copy)
+            int x = 10;
+            int y = x;
+            x = 20;
+            Console.WriteLine(y);  //10
+
+            //Value types follow value semantics
+            var equal = x == y;
+
+            //Reference types follow reference assignment
+            Movie m1 = new Movie();
+            Movie m2 = m1;
+            m1.Title = "Jaws";
+            Console.WriteLine(m2.Title);  //Jaws
+
+            //Ref types follow reference semantics
+            equal = m1 == m2;   //Object.Equals
         }
     }
 }
