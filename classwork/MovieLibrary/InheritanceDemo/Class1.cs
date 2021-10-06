@@ -2,28 +2,37 @@
 
 namespace InheritanceDemo
 {
-    public class Shape
+    public abstract class Shape
     {
-        public int OriginX { get; set; }
-        public int OriginY { get; set; }
+        public Point Origin { get; set; }
 
-        public void Draw ()
-        { }
+        public abstract void Draw ();
 
-        public void DisplayText()
-        { }
+        public virtual void DisplayText ()
+        {
+            Console.WriteLine("Shape");
+        }
     }
+
     public class DrawingList
     {
         public void Sample ()
         {
             var list = new DrawingList();
-            list.Shape1 = new Circle();
-            list.Shape2 = new Rectangle();
+
+            var circle = new Circle();
+            circle.Radius = 10;
+
+            list.Shape1 = circle;
+
+            var rect = new Rectangle();
+            rect.TopLeft = new Point(10, 10);
+            rect.BottomRight = new Point(100, 100);
+
+            list.Shape2 = rect;
         }
 
-    public Shape Shape1 { get; set; }
-        
+        public Shape Shape1 { get; set; }
         public Shape Shape2 { get; set; }
         public Shape Shape3 { get; set; }
         public Shape Shape4 { get; set; }
@@ -38,17 +47,30 @@ namespace InheritanceDemo
             Shape5?.Draw();
         }
     }
-    public int X { get ; }
-        public int Y { get ; }
-}
+
     public class Circle : Shape
-{
+    {
+        public int Radius { get; set; }
 
-}
-public class Rectangle : Shape
+        public override void Draw ()
+        {
+            //Draw a circle
+        }
 
-{ 
-    public Point TopLeft { get; set; }
-    public Point BottomRight { get; set; }
-}
+        public override void DisplayText ()
+        {
+            Console.WriteLine("Circle");
+        }
+    }
+
+    public class Rectangle : Shape
+    {
+        public Point TopLeft { get; set; }
+        public Point BottomRight { get; set; }
+
+        public override void Draw ()
+        {
+            //Draw rectangle
+        }
+    }
 }
