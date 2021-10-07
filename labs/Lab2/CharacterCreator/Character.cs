@@ -4,9 +4,8 @@ namespace CharacterCreator
 {
     public class Character
     {
-        //Mixed accessibility - one accessor may be more restrictive
-        //public int Id { get; private set; }
-        public int Id { get; } //private set ;
+        
+        public int Id { get; } 
 
         // Properties - methods with field-like syntax, exposes data
         //   Property has a type and name
@@ -51,13 +50,6 @@ namespace CharacterCreator
             set { _race = (value != null) ? value.Trim() : null; }
         }
 
-        //Full property syntax
-        /////////////////public int RunLength
-        ///////////{
-        //////////    get { return _runLength; }
-        // //////   set { _runLength = value; }
-        /////}
-        //Auto property
         public int StrengthLevel { get; set; }
         public int Intelligence { get; set; }
         public int Agility { get; set; }
@@ -74,25 +66,10 @@ namespace CharacterCreator
         /// <value>MinimumReleaseYear</value>
         public int ReleaseYear { get; set; } = MinimumReleaseYear;
 
-        //public double ReviewRating
-        //{
-        //    get { return _reviewRating; }
-        //    set { _reviewRating = value; }
-        //}
         public double ReviewRating { get; set; }
 
         public bool IsClassic { get; set; }
-        //{
-        //    get { return _isClassic; }
-        //    set { _isClassic = value; }
-        //}
-
-        //TODO: Fix field casing, don't make public
-        // Fields
-        //  1. Always camel cased
-        //  2. Should NEVER be public
-        //  3. Always zero initialized or can default
-        //  4. Cannot initialize to another field's value
+       
         private string _name;
         private string _biography;
         private string _race;
@@ -103,43 +80,11 @@ namespace CharacterCreator
         private int _constitution;
         private int _charisma;
 
-        //TODO: Use the const Luke
-        //private int _releaseYear = MinimumReleaseYear;
-
-        //private double _reviewRating;
-        //private string _rating;
-        //private bool _isClassic;
-
-        // Field is constant and therefore cannot be changed without recompiling
         public const int MinimumReleaseYear = 1900;
         public const int MinimumAttribute = 0;
         public const int MaximumAttribute = 100;
 
-        //public int GetAgeInYears ()
-        //{
-        //    return DateTime.Now.Year - ReleaseYear;
-        //}
-        public int AgeInYears
-        {
-            get { return DateTime.Now.Year - ReleaseYear; }
-            //set { }
-        }
-
-        //public bool IsBlackAndWhite ()
-        //{
-        //    return ReleaseYear < 1922;
-        //}
-        public bool IsBlackAndWhite
-        {
-            get { return ReleaseYear < 1922; }
-        }
-
-        // Methods - provide functionality (function inside a class)
-        //   Can reference fields in method
-        //   `this` represents the current instance, always the first parameter (implied)
-
-        /// <summary>Copies the movie.</summary>
-        /// <returns>A copy of the movie.</returns>
+        
         public Character Copy ()
         {
             var character = new Character();
@@ -164,17 +109,16 @@ namespace CharacterCreator
         public string Validate ( /* Movie this */ )
         {
             //Title is required
-            if (String.IsNullOrEmpty(Name)) // this.title            
+            if (String.IsNullOrEmpty(Name))             
                 return "Name is required";
 
-            if (String.IsNullOrEmpty(Profession)) // this.title            
+            if (String.IsNullOrEmpty(Profession))            
                 return "Profession is required";
 
-            if (String.IsNullOrEmpty(Race)) // this.title            
+            if (String.IsNullOrEmpty(Race))             
                 return "Race is required";
 
-            //Run length >= 0
-            //if (this.runLength < 0)
+            
             if ((StrengthLevel) < 0 || (StrengthLevel) > 100)
                 return "Strength Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
@@ -190,9 +134,6 @@ namespace CharacterCreator
             if ((Charisma) < 0 || (Charisma) > 100)
                 return "Charisma Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
 
-            //Release year >= 1900            
-           // if (ReleaseYear < MinimumReleaseYear)
-              //  return "Release Year must be at least " + MinimumReleaseYear;
 
             return null;
         }

@@ -5,15 +5,14 @@
  */
 
 using System;
-//User Interface
+
 namespace CharacterCreator.ConsoleHost
 
-
 {
-    //Main program
+   
     class Program
     {
-        //Entry point function
+        
         static void Main ( string[] args )
         {
             bool done = false;
@@ -37,8 +36,8 @@ namespace CharacterCreator.ConsoleHost
             } while (!done);
         }
 
-        //Using null to represent no movie yet
-        static Character s_character; // = new Movie();
+        
+        static Character s_character; 
 
         /// <summary>Deletes the movie, if any.</summary>
         private static void DeleteCharacter ()
@@ -59,14 +58,12 @@ namespace CharacterCreator.ConsoleHost
         /// <summary>Adds a movie.</summary>
         static void AddCharacter ()
         {
-            //Store in a temp variable until validated
+            
             var newCharacter = new Character();
-
-
 
             do
             {
-                // newMovie.set_Title(...)
+                
                 newCharacter.Name = ReadString("Enter the character name: ", true);
                 newCharacter.Biography = ReadString("Enter short character biography (optional): ", false);
 
@@ -77,7 +74,7 @@ namespace CharacterCreator.ConsoleHost
 
                 switch (newCharacter.Profession.ToUpper())
                 {
-                    //case "fighter":
+                    
                     case "PSYCHOLOGIST":
                     break;
 
@@ -107,7 +104,7 @@ namespace CharacterCreator.ConsoleHost
 
                 switch (newCharacter.Race.ToUpper())
                 {
-                    //case "fighter":
+                    
                     case "FROGGLER":
                     break;
 
@@ -141,11 +138,11 @@ namespace CharacterCreator.ConsoleHost
 
                 newCharacter.Charisma = ReadInt32("Enter a charisma level for you character (1-100): ", 1, 100);
 
-                //Validate
+                
                 var error = newCharacter.Validate();
                 if (String.IsNullOrEmpty(error))
                 {
-                    //TODO: Save movie
+                    
                     s_character = newCharacter;
                     return;
                 };
@@ -228,7 +225,7 @@ namespace CharacterCreator.ConsoleHost
         {
             Console.Write(message);
 
-            //Validate input
+            
             do
             {
                 var input = Console.ReadLine();
