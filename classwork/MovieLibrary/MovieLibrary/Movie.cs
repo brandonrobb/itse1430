@@ -1,5 +1,5 @@
 ﻿using System;
-//Business Layer
+
 namespace MovieLibrary
 {
     //Naming rules for class
@@ -8,22 +8,33 @@ namespace MovieLibrary
     // 3. Noun - because they represent an object/entity in your system
 
     /// <summary>Represents a movie.</summary>
-    public class Movie 
+    public class Movie
     {
+        #region Constructors (demo only)
+
+        //Default constructor
         public Movie ()
         { }
-        public Movie(string title) : this (0,title)
-        {
-            //Intialize(title) ;
-        //    Title = title;
-        }
-        // Constructor Chaining
-        public Movie (int id, string title) : this()
 
+        public Movie ( string title ) : this(0, title)
+        {
+            //Initialize(title);
+            //Title = title;
+        }
+
+        public Movie ( int id, string title ) : this()
         {
             Id = id;
-           Title = title;
+            //Initialize(title);
+            Title = title;
         }
+
+        //Shared init but dangerous to use as it can be called anywhere
+        //private void Initialize ( string title )
+        //{
+        //    Title = title;
+        //}
+        #endregion
 
         //Mixed accessibility - one accessor may be more restrictive
         //public int Id { get; private set; }
@@ -37,12 +48,13 @@ namespace MovieLibrary
         //   Setter has a single parameter called `value` of property type
         public string Title
         {
-            //null coalescing ::= E??E (returns first non-null expression//)
-            //null conditional ::= E?.M (returns M?)
+            //null coalescing ::= E ?? E (returns first non-null expression)
+            //null conditional ::= E?.M (returns M?) changes the type of the expression
 
             //Read: T get_Title ()
             get {
                 return _title ?? "";
+
                 //return (_title != null) ? _title : "";
                 //if (_title == null)
                 //    return "";
@@ -52,12 +64,12 @@ namespace MovieLibrary
 
             //Write void set_Title ( string value ) 
             set {
-                _title = value?.Trim();
                 //_title = value;
                 //_title = (value != null) ? value.Trim() : null;
-                // using null coalesce and null conditional to not interfere with data-type
-               // Movie m;
-               // int id = m?.Id ?? 0; //int?
+                _title = value?.Trim();
+
+                //Movie m;
+                //int id = m?.Id ?? 0; //int?
             }
         }
 
@@ -163,7 +175,6 @@ namespace MovieLibrary
 
             return movie;
         }
-
 
         /// <summary>Validates the object.</summary>
         /// <returns>The error, if any.</returns>
