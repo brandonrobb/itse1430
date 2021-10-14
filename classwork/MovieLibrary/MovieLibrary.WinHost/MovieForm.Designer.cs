@@ -46,20 +46,22 @@ namespace MovieLibrary.WinHost
             // 
             // _btnSave
             // 
+            this._btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this._btnSave.Location = new System.Drawing.Point(534, 288);
             this._btnSave.Name = "_btnSave";
             this._btnSave.Size = new System.Drawing.Size(75, 23);
-            this._btnSave.TabIndex = 0;
+            this._btnSave.TabIndex = 16;
             this._btnSave.Text = "Save";
             this._btnSave.UseVisualStyleBackColor = true;
             this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
             // _btnCancel
             // 
+            this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._btnCancel.Location = new System.Drawing.Point(677, 288);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
-            this._btnCancel.TabIndex = 1;
+            this._btnCancel.TabIndex = 17;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -114,7 +116,7 @@ namespace MovieLibrary.WinHost
             this._chkIsClassic.Location = new System.Drawing.Point(141, 291);
             this._chkIsClassic.Name = "_chkIsClassic";
             this._chkIsClassic.Size = new System.Drawing.Size(78, 19);
-            this._chkIsClassic.TabIndex = 8;
+            this._chkIsClassic.TabIndex = 15;
             this._chkIsClassic.Text = "Is Classic?";
             this._chkIsClassic.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +131,7 @@ namespace MovieLibrary.WinHost
             this._cbRating.Location = new System.Drawing.Point(141, 140);
             this._cbRating.Name = "_cbRating";
             this._cbRating.Size = new System.Drawing.Size(121, 23);
-            this._cbRating.TabIndex = 9;
+            this._cbRating.TabIndex = 12;
             // 
             // _txtTitle
             // 
@@ -143,21 +145,21 @@ namespace MovieLibrary.WinHost
             this._txtReleaseYear.Location = new System.Drawing.Point(141, 191);
             this._txtReleaseYear.Name = "_txtReleaseYear";
             this._txtReleaseYear.Size = new System.Drawing.Size(100, 23);
-            this._txtReleaseYear.TabIndex = 11;
+            this._txtReleaseYear.TabIndex = 13;
             // 
             // _txtRunLength
             // 
             this._txtRunLength.Location = new System.Drawing.Point(141, 78);
             this._txtRunLength.Name = "_txtRunLength";
             this._txtRunLength.Size = new System.Drawing.Size(100, 23);
-            this._txtRunLength.TabIndex = 12;
+            this._txtRunLength.TabIndex = 11;
             // 
             // _txtDescription
             // 
             this._txtDescription.Location = new System.Drawing.Point(141, 240);
             this._txtDescription.Name = "_txtDescription";
             this._txtDescription.Size = new System.Drawing.Size(100, 23);
-            this._txtDescription.TabIndex = 13;
+            this._txtDescription.TabIndex = 14;
             // 
             // MovieForm
             // 
