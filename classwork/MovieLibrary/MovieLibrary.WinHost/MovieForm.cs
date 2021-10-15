@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ITSE 1430
+// Movie Library
+
+using System;
 using System.Windows.Forms;
 
 namespace MovieLibrary.WinHost
 {
+    /// <summary>Adds or edits a movie.</summary>
     public partial class MovieForm : Form
     {
         public MovieForm ()
@@ -17,28 +14,27 @@ namespace MovieLibrary.WinHost
             InitializeComponent();
         }
 
-       public Movie Movie { get; set; }
+        public Movie Movie { get; set; }
 
         protected override void OnLoad ( EventArgs e )
         {
+            //Always call base version first
             base.OnLoad(e);
-            if (Movie != null)
-                LoadMovie();
 
+            //Load UI, if necessary
+            if (Movie != null)
+                LoadMovie(Movie);
         }
 
         private void LoadMovie ( Movie movie )
         {
             _txtTitle.Text = movie.Title;
             _txtDescription.Text = movie.Description;
-            _cbRating.SelectedText = movie.Rating;
-            _txtRunLength = movie.RunLength.ToString();
-            _txtReleaseYear = movie.ReleaseYear.ToString();
+            _cbRating.SelectedValue = movie.Rating;
+            _txtRunLength.Text = movie.RunLength.ToString();
+            _txtReleaseYear.Text = movie.ReleaseYear.ToString();
             _chkIsClassic.Checked = movie.IsClassic;
-
-
         }
-
 
         //Called when Save clicked
         private void OnSave ( object sender, EventArgs e )
@@ -46,14 +42,11 @@ namespace MovieLibrary.WinHost
             //Build up a Movie
             var movie = new Movie();
             movie.Title = _txtTitle.Text;
-
             movie.Description = _txtDescription.Text;
             movie.Rating = _cbRating.SelectedText;
             movie.RunLength = GetInt32(_txtRunLength);
             movie.ReleaseYear = GetInt32(_txtReleaseYear);
-
             movie.IsClassic = _chkIsClassic.Checked;
-
 
             //Validate
             var error = movie.Validate();
@@ -63,25 +56,25 @@ namespace MovieLibrary.WinHost
                 DialogResult = DialogResult.None;
                 return;
             };
-            Movie = movie;
-            //Return Movie
 
-            // Close Form
-           //Close();
+            Movie = movie;
+
+            //Close the form
+            //Close();
         }
 
-        private int GetInt32 ( Control /*TextBox*/ control)
+        private void DisplayError ( string message, string title )
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private int GetInt32 ( Control /*TextBox*/ control )
         {
             var text = control.Text;
             if (Int32.TryParse(text, out var result))
                 return result;
 
             return -1;
-        }
-
-        private void DisplayError ( string message, string title )
-        {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

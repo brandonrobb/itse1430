@@ -8,25 +8,25 @@ namespace MovieLibrary
     // 3. Noun - because they represent an object/entity in your system
 
     /// <summary>Represents a movie.</summary>
-    public class Movie
+    public class Character
     {
         #region Constructors (demo only)
 
         //Default constructor
-        public Movie ()
+        public Character ()
         { }
 
-        public Movie ( string title ) : this(0, title)
+        public Character ( string title ) : this(0, title)
         {
             //Initialize(title);
             //Title = title;
         }
 
-        public Movie ( int id, string title ) : this()
+        public Character ( int id, string title ) : this()
         {
             Id = id;
             //Initialize(title);
-            Title = title;
+            Name = title;
         }
 
         //Shared init but dangerous to use as it can be called anywhere
@@ -46,7 +46,7 @@ namespace MovieLibrary
         //   Property has a getter to read the value and a setter to write the value
         //   Getter must return a value of property type
         //   Setter has a single parameter called `value` of property type
-        public string Title
+        public string Name
         {
             //null coalescing ::= E ?? E (returns first non-null expression)
             //null conditional ::= E?.M (returns M?) changes the type of the expression
@@ -74,7 +74,7 @@ namespace MovieLibrary
         }
 
         /// <summary>Gets or sets the description.</summary>
-        public string Description
+        public string Biography
         {
             get { return (_description != null) ? _description : ""; }
             set { _description = (value != null) ? value.Trim() : null; }
@@ -93,7 +93,7 @@ namespace MovieLibrary
         //    set { _runLength = value; }
         //}
         //Auto property
-        public int RunLength { get; set; }
+        public int Intelligence { get; set; }
 
         //public int ReleaseYear
         //{
@@ -162,23 +162,18 @@ namespace MovieLibrary
 
         /// <summary>Copies the movie.</summary>
         /// <returns>A copy of the movie.</returns>
-        public Movie Copy ()
+        public Character Copy ()
         {
-            var movie = new Movie();
-            movie.Title = Title;
-            movie.Description = Description;
-            movie.RunLength = RunLength;
-            movie.ReleaseYear = ReleaseYear;
-            movie.ReviewRating = ReviewRating;
-            movie.Rating = Rating;
-            movie.IsClassic = IsClassic;
+            var character = new Character();
+            character.Name = Name;
+            character.Biography = Biography;
+            character.Intelligence = Intelligence;
+            character.ReleaseYear = ReleaseYear;
+            character.ReviewRating = ReviewRating;
+            character.Rating = Rating;
+            character.IsClassic = IsClassic;
 
-            return movie;
-        }
-
-        public override string ToString ()
-        {
-            return $"{Title} ({ReleaseYear})";
+            return character;
         }
 
         /// <summary>Validates the object.</summary>
@@ -186,12 +181,12 @@ namespace MovieLibrary
         public string Validate ( /* Movie this */ )
         {
             //Title is required
-            if (String.IsNullOrEmpty(Title)) // this.title            
+            if (String.IsNullOrEmpty(Name)) // this.title            
                 return "Title is required";
 
             //Run length >= 0
             //if (this.runLength < 0)
-            if (RunLength < 0)
+            if (Intelligence < 0)
                 return "Run Length must be at least zero";
 
             //Release year >= 1900            
@@ -203,7 +198,7 @@ namespace MovieLibrary
 
         private void SetDescriptionToTitle ()
         {
-            Description = Title;
+            Biography = Name;
         }
     }
 }

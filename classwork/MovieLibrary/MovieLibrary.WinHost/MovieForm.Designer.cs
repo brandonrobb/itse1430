@@ -1,4 +1,8 @@
 ﻿
+// ITSE 1430
+// Movie Library
+
+
 namespace MovieLibrary.WinHost
 {
     partial class MovieForm
@@ -39,18 +43,18 @@ namespace MovieLibrary.WinHost
             this._chkIsClassic = new System.Windows.Forms.CheckBox();
             this._cbRating = new System.Windows.Forms.ComboBox();
             this._txtTitle = new System.Windows.Forms.TextBox();
-            this._txtReleaseYear = new System.Windows.Forms.TextBox();
             this._txtRunLength = new System.Windows.Forms.TextBox();
+            this._txtReleaseYear = new System.Windows.Forms.TextBox();
             this._txtDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _btnSave
             // 
             this._btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this._btnSave.Location = new System.Drawing.Point(534, 288);
+            this._btnSave.Location = new System.Drawing.Point(437, 276);
             this._btnSave.Name = "_btnSave";
             this._btnSave.Size = new System.Drawing.Size(75, 23);
-            this._btnSave.TabIndex = 16;
+            this._btnSave.TabIndex = 0;
             this._btnSave.Text = "Save";
             this._btnSave.UseVisualStyleBackColor = true;
             this._btnSave.Click += new System.EventHandler(this.OnSave);
@@ -58,17 +62,17 @@ namespace MovieLibrary.WinHost
             // _btnCancel
             // 
             this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._btnCancel.Location = new System.Drawing.Point(677, 288);
+            this._btnCancel.Location = new System.Drawing.Point(538, 276);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
-            this._btnCancel.TabIndex = 17;
+            this._btnCancel.TabIndex = 1;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Location = new System.Drawing.Point(36, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 15);
             this.label1.TabIndex = 2;
@@ -77,7 +81,7 @@ namespace MovieLibrary.WinHost
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 86);
+            this.label2.Location = new System.Drawing.Point(27, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 3;
@@ -86,7 +90,7 @@ namespace MovieLibrary.WinHost
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 148);
+            this.label3.Location = new System.Drawing.Point(26, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 15);
             this.label3.TabIndex = 4;
@@ -95,7 +99,7 @@ namespace MovieLibrary.WinHost
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 199);
+            this.label4.Location = new System.Drawing.Point(26, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 15);
             this.label4.TabIndex = 5;
@@ -104,7 +108,7 @@ namespace MovieLibrary.WinHost
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 248);
+            this.label5.Location = new System.Drawing.Point(26, 188);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 15);
             this.label5.TabIndex = 6;
@@ -113,62 +117,63 @@ namespace MovieLibrary.WinHost
             // _chkIsClassic
             // 
             this._chkIsClassic.AutoSize = true;
-            this._chkIsClassic.Location = new System.Drawing.Point(141, 291);
+            this._chkIsClassic.Location = new System.Drawing.Point(120, 228);
             this._chkIsClassic.Name = "_chkIsClassic";
             this._chkIsClassic.Size = new System.Drawing.Size(78, 19);
-            this._chkIsClassic.TabIndex = 15;
+            this._chkIsClassic.TabIndex = 8;
             this._chkIsClassic.Text = "Is Classic?";
             this._chkIsClassic.UseVisualStyleBackColor = true;
             // 
             // _cbRating
             // 
+            this._cbRating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbRating.FormattingEnabled = true;
             this._cbRating.Items.AddRange(new object[] {
-            "G ",
+            "G",
             "PG",
             "PG-13",
             "R"});
-            this._cbRating.Location = new System.Drawing.Point(141, 140);
+            this._cbRating.Location = new System.Drawing.Point(120, 97);
             this._cbRating.Name = "_cbRating";
             this._cbRating.Size = new System.Drawing.Size(121, 23);
-            this._cbRating.TabIndex = 12;
+            this._cbRating.TabIndex = 9;
             // 
             // _txtTitle
             // 
-            this._txtTitle.Location = new System.Drawing.Point(141, 40);
+            this._txtTitle.Location = new System.Drawing.Point(120, 24);
             this._txtTitle.Name = "_txtTitle";
             this._txtTitle.Size = new System.Drawing.Size(100, 23);
             this._txtTitle.TabIndex = 10;
             // 
-            // _txtReleaseYear
-            // 
-            this._txtReleaseYear.Location = new System.Drawing.Point(141, 191);
-            this._txtReleaseYear.Name = "_txtReleaseYear";
-            this._txtReleaseYear.Size = new System.Drawing.Size(100, 23);
-            this._txtReleaseYear.TabIndex = 13;
-            // 
             // _txtRunLength
             // 
-            this._txtRunLength.Location = new System.Drawing.Point(141, 78);
+            this._txtRunLength.Location = new System.Drawing.Point(120, 52);
             this._txtRunLength.Name = "_txtRunLength";
             this._txtRunLength.Size = new System.Drawing.Size(100, 23);
             this._txtRunLength.TabIndex = 11;
             // 
+            // _txtReleaseYear
+            // 
+            this._txtReleaseYear.Location = new System.Drawing.Point(120, 145);
+            this._txtReleaseYear.Name = "_txtReleaseYear";
+            this._txtReleaseYear.Size = new System.Drawing.Size(100, 23);
+            this._txtReleaseYear.TabIndex = 12;
+            // 
             // _txtDescription
             // 
-            this._txtDescription.Location = new System.Drawing.Point(141, 240);
+            this._txtDescription.Location = new System.Drawing.Point(120, 179);
             this._txtDescription.Name = "_txtDescription";
             this._txtDescription.Size = new System.Drawing.Size(100, 23);
-            this._txtDescription.TabIndex = 14;
+            this._txtDescription.TabIndex = 13;
             // 
             // MovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(652, 328);
             this.Controls.Add(this._txtDescription);
-            this.Controls.Add(this._txtRunLength);
             this.Controls.Add(this._txtReleaseYear);
+            this.Controls.Add(this._txtRunLength);
             this.Controls.Add(this._txtTitle);
             this.Controls.Add(this._cbRating);
             this.Controls.Add(this._chkIsClassic);
@@ -198,8 +203,8 @@ namespace MovieLibrary.WinHost
         private System.Windows.Forms.CheckBox _chkIsClassic;
         private System.Windows.Forms.ComboBox _cbRating;
         private System.Windows.Forms.TextBox _txtTitle;
-        private System.Windows.Forms.TextBox _txtReleaseYear;
         private System.Windows.Forms.TextBox _txtRunLength;
+        private System.Windows.Forms.TextBox _txtReleaseYear;
         private System.Windows.Forms.TextBox _txtDescription;
     }
 }
