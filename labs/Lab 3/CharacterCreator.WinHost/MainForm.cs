@@ -45,7 +45,7 @@ namespace CharacterCreator.WinHost
         }
 
         //Called when Movie\Add is selected
-        private void OnMovieAdd ( object sender, EventArgs e )
+        private void OnCharacterAdd ( object sender, EventArgs e )
         {
             var dlg = new AddCharacterForm();
 
@@ -54,44 +54,44 @@ namespace CharacterCreator.WinHost
                 return;
 
             //TODO: Save movie            
-            _movie = dlg.Movie;
+            _character = dlg.Character;
             UpdateUI();
         }
 
-        private void OnMovieEdit ( object sender, EventArgs e )
+        private void OnCharacterEdit ( object sender, EventArgs e )
         {
-            if (_movie == null)
+            if (_character == null)
                 return;
 
             var dlg = new AddCharacterForm();
-            dlg.Movie = _movie;
+            dlg.Character = _character;
 
             //ShowDialog -> DialogResult
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
             //TODO: Save movie            
-            _movie = dlg.Movie;
+            _character = dlg.Character;
             UpdateUI();
         }
         #endregion
 
-        private Movie _movie;
+        private Character _character;
 
         #region Private Members
 
         private void UpdateUI ()
         {
             //Update movie list            
-            var movies = (_movie != null) ? new Movie[1] : new Movie[0];
-            if (_movie != null)
-                movies[0] = _movie;
+            var characters = (_character != null) ? new Character[1] : new Character[0];
+            if (_character != null)
+                characters[0] = _character;
 
             var bindingSource = new BindingSource();
-            bindingSource.DataSource = movies;
+            bindingSource.DataSource = characters;
 
             //bind the movies to the listbox
-            _listMovies.DataSource = bindingSource;
+            _listCharacters.DataSource = bindingSource;
         }
 
         /// <summary>Displays a confirmation dialog.</summary>
@@ -107,17 +107,17 @@ namespace CharacterCreator.WinHost
 
         #endregion
 
-        private void OnMovieDelete ( object sender, EventArgs e )
+        private void OnCharacterDelete ( object sender, EventArgs e )
         {
-            if (_movie == null)
+            if (_character == null)
                 return;
 
             //Confirmation
-            if (!Confirm($"Are you sure you want to delete '{_movie.Title}'?", "Delete"))
+            if (!Confirm($"Are you sure you want to delete '{_character.CharacterName}'?", "Delete"))
                 return;
 
             //TODO: Delete
-            _movie = null;
+            _character = null;
             UpdateUI();
         }
 

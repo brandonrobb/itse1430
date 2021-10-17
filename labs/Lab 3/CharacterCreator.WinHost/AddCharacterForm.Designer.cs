@@ -38,10 +38,10 @@ namespace CharacterCreator.WinHost
             this.label5 = new System.Windows.Forms.Label();
             this._chkIsClassic = new System.Windows.Forms.CheckBox();
             this._cbRating = new System.Windows.Forms.ComboBox();
-            this._txtTitle = new System.Windows.Forms.TextBox();
+            this._txtCharacterName = new System.Windows.Forms.TextBox();
             this._txtRunLength = new System.Windows.Forms.TextBox();
-            this._txtReleaseYear = new System.Windows.Forms.TextBox();
-            this._txtDescription = new System.Windows.Forms.TextBox();
+            this.Agility = new System.Windows.Forms.TextBox();
+            this._txtBiography = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _btnSave
@@ -108,9 +108,9 @@ namespace CharacterCreator.WinHost
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(30, 251);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Description";
+            this.label5.Text = "Biography";
             // 
             // _chkIsClassic
             // 
@@ -138,13 +138,13 @@ namespace CharacterCreator.WinHost
             this._cbRating.Size = new System.Drawing.Size(138, 28);
             this._cbRating.TabIndex = 9;
             // 
-            // _txtTitle
+            // _txtCharacterName
             // 
-            this._txtTitle.Location = new System.Drawing.Point(137, 32);
-            this._txtTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._txtTitle.Name = "_txtTitle";
-            this._txtTitle.Size = new System.Drawing.Size(114, 27);
-            this._txtTitle.TabIndex = 10;
+            this._txtCharacterName.Location = new System.Drawing.Point(137, 32);
+            this._txtCharacterName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtCharacterName.Name = "_txtCharacterName";
+            this._txtCharacterName.Size = new System.Drawing.Size(114, 27);
+            this._txtCharacterName.TabIndex = 10;
             // 
             // _txtRunLength
             // 
@@ -154,31 +154,31 @@ namespace CharacterCreator.WinHost
             this._txtRunLength.Size = new System.Drawing.Size(114, 27);
             this._txtRunLength.TabIndex = 11;
             // 
-            // _txtReleaseYear
+            // Agility
             // 
-            this._txtReleaseYear.Location = new System.Drawing.Point(137, 193);
-            this._txtReleaseYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._txtReleaseYear.Name = "_txtReleaseYear";
-            this._txtReleaseYear.Size = new System.Drawing.Size(114, 27);
-            this._txtReleaseYear.TabIndex = 12;
+            this.Agility.Location = new System.Drawing.Point(137, 193);
+            this.Agility.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Agility.Name = "Agility";
+            this.Agility.Size = new System.Drawing.Size(114, 27);
+            this.Agility.TabIndex = 12;
             // 
-            // _txtDescription
+            // _txtBiography
             // 
-            this._txtDescription.Location = new System.Drawing.Point(137, 239);
-            this._txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._txtDescription.Name = "_txtDescription";
-            this._txtDescription.Size = new System.Drawing.Size(114, 27);
-            this._txtDescription.TabIndex = 13;
+            this._txtBiography.Location = new System.Drawing.Point(137, 239);
+            this._txtBiography.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._txtBiography.Name = "_txtBiography";
+            this._txtBiography.Size = new System.Drawing.Size(114, 27);
+            this._txtBiography.TabIndex = 13;
             // 
-            // MovieForm
+            // AddCharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 437);
-            this.Controls.Add(this._txtDescription);
-            this.Controls.Add(this._txtReleaseYear);
+            this.Controls.Add(this._txtBiography);
+            this.Controls.Add(this.Agility);
             this.Controls.Add(this._txtRunLength);
-            this.Controls.Add(this._txtTitle);
+            this.Controls.Add(this._txtCharacterName);
             this.Controls.Add(this._cbRating);
             this.Controls.Add(this._chkIsClassic);
             this.Controls.Add(this.label5);
@@ -189,9 +189,9 @@ namespace CharacterCreator.WinHost
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnSave);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "MovieForm";
-            this.Text = "Movie Details";
-            this.Load += new System.EventHandler(this.MovieForm_Load);
+            this.Name = "AddCharacterForm";
+            this.Text = "Character  Details";
+            this.Load += new System.EventHandler(this.CharacterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,9 +208,9 @@ namespace CharacterCreator.WinHost
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox _chkIsClassic;
         private System.Windows.Forms.ComboBox _cbRating;
-        private System.Windows.Forms.TextBox _txtTitle;
+        private System.Windows.Forms.TextBox _txtCharacterName;
         private System.Windows.Forms.TextBox _txtRunLength;
-        private System.Windows.Forms.TextBox _txtReleaseYear;
-        private System.Windows.Forms.TextBox _txtDescription;
+        private System.Windows.Forms.TextBox Agility;
+        private System.Windows.Forms.TextBox _txtBiography;
     }
 }

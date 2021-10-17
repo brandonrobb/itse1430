@@ -17,7 +17,7 @@ namespace CharacterCreator.WinHost
             InitializeComponent();
         }
 
-        public Movie Movie { get; set; }
+        public Character Character { get; set; }
 
         protected override void OnLoad ( EventArgs e )
         {
@@ -25,34 +25,34 @@ namespace CharacterCreator.WinHost
             base.OnLoad(e);
 
             //Load UI, if necessary
-            if (Movie != null)
-                LoadMovie(Movie);
+            if (Character != null)
+                LoadCharacter(Character);
         }
 
-        private void LoadMovie ( Movie movie )
+        private void LoadCharacter ( Character character )
         {
-            _txtTitle.Text = movie.Title;
-            _txtDescription.Text = movie.Description;
-            _cbRating.SelectedValue = movie.Rating;
-            _txtRunLength.Text = movie.RunLength.ToString();
-            _txtReleaseYear.Text = movie.ReleaseYear.ToString();
-            _chkIsClassic.Checked = movie.IsClassic;
+            _txtCharacterName.Text = character.CharacterName;
+            _txtBiography.Text = character.Biography;
+            _cbRating.SelectedValue = character.Rating;
+            _txtRunLength.Text = character.RunLength.ToString();
+            Agility.Text = character.Agility.ToString();
+            _chkIsClassic.Checked = character.IsClassic;
         }
 
         //Called when Save clicked
         private void OnSave ( object sender, EventArgs e )
         {
             //Build up a Movie
-            var movie = new Movie();
-            movie.Title = _txtTitle.Text;
-            movie.Description = _txtDescription.Text;
-            movie.Rating = _cbRating.SelectedText;
-            movie.RunLength = GetInt32(_txtRunLength);
-            movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            movie.IsClassic = _chkIsClassic.Checked;
+            var character = new Character();
+            character.CharacterName = _txtCharacterName.Text;
+            character.Biography = _txtBiography.Text;
+            character.Rating = _cbRating.SelectedText;
+            character.RunLength = GetInt32(_txtRunLength);
+            character.Agility = GetInt32(Agility);
+            character.IsClassic = _chkIsClassic.Checked;
 
             //Validate
-            var error = movie.Validate();
+            var error = character.Validate();
             if (!String.IsNullOrEmpty(error))
             {
                 DisplayError(error, "Error");
@@ -60,7 +60,7 @@ namespace CharacterCreator.WinHost
                 return;
             };
 
-            Movie = movie;
+            Character = character;
 
             //Close the form
             //Close();
@@ -80,7 +80,7 @@ namespace CharacterCreator.WinHost
             return -1;
         }
 
-        private void MovieForm_Load ( object sender, EventArgs e )
+        private void CharacterForm_Load ( object sender, EventArgs e )
         {
 
         }
