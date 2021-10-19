@@ -189,6 +189,9 @@ namespace MovieLibrary
             if (String.IsNullOrEmpty(Title)) // this.title            
                 return "Title is required";
 
+            if (String.IsNullOrEmpty(Rating)) // this.title            
+                return "Rating is required";
+
             //Run length >= 0
             //if (this.runLength < 0)
             if (RunLength < 0)
