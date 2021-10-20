@@ -31,11 +31,11 @@ namespace CharacterCreator.WinHost
 
         private void LoadCharacter ( Character character )
         {
-            _txtCharacterName.Text = character.CharacterName;
+            _txtCharacterName.Text = character.Name;
             _txtBiography.Text = character.Biography;
-            _cbRating.SelectedValue = character.Rating;
+            _cbProfession.SelectedValue = character.Profession;
             _txtRunLength.Text = character.RunLength.ToString();
-            Agility.Text = character.Agility.ToString();
+            _txtAgility.Text = character.Agility.ToString();
             _chkIsClassic.Checked = character.IsClassic;
         }
 
@@ -44,11 +44,11 @@ namespace CharacterCreator.WinHost
         {
             //Build up a Movie
             var character = new Character();
-            character.CharacterName = _txtCharacterName.Text;
+            character.Name = _txtCharacterName.Text;
             character.Biography = _txtBiography.Text;
-            character.Rating = _cbRating.SelectedText;
+            character.Rating = _cbProfession.SelectedText;
             character.RunLength = GetInt32(_txtRunLength);
-            character.Agility = GetInt32(Agility);
+            character.Agility = GetInt32(_txtAgility);
             character.IsClassic = _chkIsClassic.Checked;
 
             //Validate
