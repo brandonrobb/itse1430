@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CharacterCreator.WinHost
 {
-    public partial class AboutBox : Form
+    partial class AboutBox : Form
     {
         public AboutBox ()
         {

@@ -112,8 +112,8 @@ namespace CharacterCreator.WinHost
             if (_character == null)
                 return;
 
-            //Confirmation
-            if (!Confirm($"Are you sure you want to delete '{_character.CharacterName}'?", "Delete"))
+            //Confirmation *****Make Sure This Works*******
+            if (!Confirm($"Are you sure you want to delete '{_character.Name}'?", "Delete"))
                 return;
 
             //TODO: Delete

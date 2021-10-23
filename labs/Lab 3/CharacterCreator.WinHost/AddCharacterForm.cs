@@ -34,9 +34,14 @@ namespace CharacterCreator.WinHost
             _txtCharacterName.Text = character.Name;
             _txtBiography.Text = character.Biography;
             _cbProfession.SelectedValue = character.Profession;
-            _txtRunLength.Text = character.RunLength.ToString();
+            _cbRace.SelectedValue = character.Race;
+            //_txtRunLength.Text = character.RunLength.ToString();
+            _txtStrength.Text = character.StrengthLevel.ToString();
+            _txtIntelligence.Text = character.Intelligence.ToString();
             _txtAgility.Text = character.Agility.ToString();
-            _chkIsClassic.Checked = character.IsClassic;
+            _txtConstitution.Text = character.Constitution.ToString();
+            _txtCharisma.Text = character.Charisma.ToString();
+            //_chkIsClassic.Checked = character.IsClassic;
         }
 
         //Called when Save clicked
@@ -46,10 +51,14 @@ namespace CharacterCreator.WinHost
             var character = new Character();
             character.Name = _txtCharacterName.Text;
             character.Biography = _txtBiography.Text;
-            character.Rating = _cbProfession.SelectedText;
-            character.RunLength = GetInt32(_txtRunLength);
+            character.Profession = _cbProfession.SelectedText;
+            //character.RunLength = GetInt32(_txtRunLength);
+            character.StrengthLevel = GetInt32(_txtStrength);
+            character.Intelligence = GetInt32(_txtIntelligence);
             character.Agility = GetInt32(_txtAgility);
-            character.IsClassic = _chkIsClassic.Checked;
+            character.Constitution = GetInt32(_txtConstitution);
+            character.Charisma = GetInt32(_txtCharisma);
+            //character.IsClassic = _chkIsClassic.Checked;
 
             //Validate
             var error = character.Validate();
