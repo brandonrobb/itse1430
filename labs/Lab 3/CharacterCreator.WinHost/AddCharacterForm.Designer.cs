@@ -1,5 +1,5 @@
 ﻿
-namespace CharacterCreator.WinHost
+namespace AdventureGame.WinHost
 {
     partial class AddCharacterForm
     {
@@ -175,10 +175,11 @@ namespace CharacterCreator.WinHost
             this._cbProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbProfession.FormattingEnabled = true;
             this._cbProfession.Items.AddRange(new object[] {
-            "G",
-            "PG",
-            "PG-13",
-            "R"});
+            "Psychologist",
+            "Doctor",
+            "Contractor",
+            "Athlete",
+            "Singer"});
             this._cbProfession.Location = new System.Drawing.Point(134, 79);
             this._cbProfession.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._cbProfession.Name = "_cbProfession";
@@ -190,10 +191,11 @@ namespace CharacterCreator.WinHost
             this._cbRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbRace.FormattingEnabled = true;
             this._cbRace.Items.AddRange(new object[] {
-            "G",
-            "PG",
-            "PG-13",
-            "R"});
+            "Froggler",
+            "Doggler",
+            "Hoggler",
+            "Snakeman",
+            "Martian"});
             this._cbRace.Location = new System.Drawing.Point(134, 129);
             this._cbRace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._cbRace.Name = "_cbRace";
@@ -209,6 +211,7 @@ namespace CharacterCreator.WinHost
             this._txtBiography.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtBiography.Multiline = true;
             this._txtBiography.Name = "_txtBiography";
+            this._txtBiography.PlaceholderText = "Type short history of your character";
             this._txtBiography.Size = new System.Drawing.Size(250, 72);
             this._txtBiography.TabIndex = 13;
             // 
@@ -218,8 +221,10 @@ namespace CharacterCreator.WinHost
             this._txtStrength.Location = new System.Drawing.Point(134, 251);
             this._txtStrength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._txtStrength.Name = "_txtStrength";
+            this._txtStrength.PlaceholderText = "50";
             this._txtStrength.Size = new System.Drawing.Size(114, 27);
             this._txtStrength.TabIndex = 14;
+            this._txtStrength.Text = "50";
             // 
             // _txtIntelligence
             // 
@@ -229,6 +234,7 @@ namespace CharacterCreator.WinHost
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(114, 27);
             this._txtIntelligence.TabIndex = 15;
+            this._txtIntelligence.Text = "50";
             // 
             // _txtAgility
             // 
@@ -238,6 +244,7 @@ namespace CharacterCreator.WinHost
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(114, 27);
             this._txtAgility.TabIndex = 16;
+            this._txtAgility.Text = "50";
             // 
             // _txtConstitution
             // 
@@ -247,6 +254,7 @@ namespace CharacterCreator.WinHost
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(114, 27);
             this._txtConstitution.TabIndex = 17;
+            this._txtConstitution.Text = "50";
             // 
             // _txtCharisma
             // 
@@ -256,6 +264,7 @@ namespace CharacterCreator.WinHost
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(114, 27);
             this._txtCharisma.TabIndex = 18;
+            this._txtCharisma.Text = "50";
             // 
             // AddCharacterForm
             // 
@@ -283,9 +292,11 @@ namespace CharacterCreator.WinHost
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnSave);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(763, 541);
+            this.MinimumSize = new System.Drawing.Size(763, 541);
             this.Name = "AddCharacterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Character  Details";
-            this.Load += new System.EventHandler(this.CharacterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +324,6 @@ namespace CharacterCreator.WinHost
         private System.Windows.Forms.TextBox _txtAgility;
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
+        private System.Windows.Forms.ErrorProvider _errors;
     }
 }

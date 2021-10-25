@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharacterCreator", "CharacterCreator\CharacterCreator.csproj", "{3C472CEF-4441-4610-8C5E-9783972E77C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterCreator.WinHost", "CharacterCreator.WinHost\CharacterCreator.WinHost.csproj", "{9F0D0EDF-CBF7-4591-BCFE-9E7899113D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrandonRobb.AdventureGame.WinHost", "CharacterCreator.WinHost\BrandonRobb.AdventureGame.WinHost.csproj", "{9F0D0EDF-CBF7-4591-BCFE-9E7899113D4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
