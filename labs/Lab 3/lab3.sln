@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharacterCreator", "CharacterCreator\CharacterCreator.csproj", "{8EDBCA6C-6605-4969-9E7A-127443880534}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrandonRobb.AdventureGame.WinHost", "AdventureGame.WinHost\BrandonRobb.AdventureGame.WinHost.csproj", "{BBE745A7-3081-4B06-B96B-E9F3F953F3C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EDBCA6C-6605-4969-9E7A-127443880534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDBCA6C-6605-4969-9E7A-127443880534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDBCA6C-6605-4969-9E7A-127443880534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDBCA6C-6605-4969-9E7A-127443880534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE745A7-3081-4B06-B96B-E9F3F953F3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE745A7-3081-4B06-B96B-E9F3F953F3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE745A7-3081-4B06-B96B-E9F3F953F3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE745A7-3081-4B06-B96B-E9F3F953F3C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19F5A1D8-2A76-4639-A882-083AD3B25EFF}
+	EndGlobalSection
+EndGlobal
