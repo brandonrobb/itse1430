@@ -10,7 +10,7 @@ namespace MovieLibrary.WinHost
     public partial class MainForm : Form
     {
         #region Construction
-
+         
         public MainForm ()
         {
             InitializeComponent();
@@ -76,17 +76,20 @@ namespace MovieLibrary.WinHost
             UpdateUI();
         }
         #endregion
-
+        //Todo: Romove this..
         private Movie _movie;
+
+        private MovieDatabase _movies = new MovieDatabase();
 
         #region Private Members
 
         private void UpdateUI ()
         {
             //Update movie list            
-            var movies = (_movie != null) ? new Movie[1] : new Movie[0];
-            if (_movie != null)
-                movies[0] = _movie;
+            Movie[] movies = _movie.GetAll();
+            var movie = movies[1] = new Movie();
+            movie.Title = "Dune";
+            movie.Description = "Something";
 
             var bindingSource = new BindingSource();
             bindingSource.DataSource = movies;
