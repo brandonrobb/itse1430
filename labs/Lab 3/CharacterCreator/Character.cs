@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CharacterCreator
+namespace AdventureGame
 {
     public class Character
     {
@@ -64,7 +64,7 @@ namespace CharacterCreator
         //}
         /// <summary>Gets or sets the release year.</summary>
         /// <value>MinimumReleaseYear</value>
-        public int ReleaseYear { get; set; } = MinimumReleaseYear;
+        public int ReleaseYear { get; set; } = MinimumValue;
 
         public double ReviewRating { get; set; }
 
@@ -80,7 +80,7 @@ namespace CharacterCreator
         private int _constitution;
         private int _charisma;
 
-        public const int MinimumReleaseYear = 1900;
+        public const int MinimumValue = 1900;
         public const int MinimumAttribute = 0;
         public const int MaximumAttribute = 100;
 
@@ -105,34 +105,34 @@ namespace CharacterCreator
         }
 
         /// <summary>Validates the object.</summary>
-        /// <returns>The error, if any.</returns>
+       /// <returns>The error, if any.</returns>
         public string Validate ( /* Movie this */ )
         {
-            //Title is required
-            if (String.IsNullOrEmpty(Name))             
+           // Title is required
+            if (String.IsNullOrEmpty(Name))
                 return "Name is required";
 
-            if (String.IsNullOrEmpty(Profession))            
-                return "Profession is required";
+            if (String.IsNullOrEmpty(Profession))
+                return "Professionss is required";
 
-            if (String.IsNullOrEmpty(Race))             
-                return "Race is required";
+            if (String.IsNullOrEmpty(Race))
+                return "Racess is required";
 
-            
+
             if ((StrengthLevel) < 0 || (StrengthLevel) > 100)
-                return "Strength Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+                return "Strength Level must be " + MinimumAttribute +" - "+ MaximumAttribute;
 
             if ((Intelligence) < 0 || (Intelligence) > 100)
-                return "Intelligence Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+                return "Intelligence Level must be " + MinimumAttribute +" - "+ MaximumAttribute;
 
             if ((Agility) < 0 || (Agility) > 100)
-                return "Agility Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+                return "Agility Level must be " + MinimumAttribute +" - "+ MaximumAttribute;
 
             if ((Constitution) < 0 || (Constitution) > 100)
-                return "Constitution Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+                return "Constitution Level must be " + MinimumAttribute +" - "+ MaximumAttribute;
 
             if ((Charisma) < 0 || (Charisma) > 100)
-                return "Charisma Level must be" + MinimumAttribute +" - "+ MaximumAttribute;
+                return "Charisma Level must be " + MinimumAttribute +" - "+ MaximumAttribute;
 
 
             return null;

@@ -1,5 +1,5 @@
 ﻿
-namespace CharacterCreator.WinHost
+namespace AdventureGame.WinHost
 {
     partial class AboutBox
     {
