@@ -4,8 +4,8 @@
       <OutputType>WinExe</OutputType>
       <TargetFramework>net5.0-windows</TargetFramework>
       <UseWindowsForms>true</UseWindowsForms>
-      <Product>Movie Library</Product>
-      <Company>Your Name</Company>
+      <Product>Adventure Game</Product>
+      <Company>Brandon Robb</Company>
       <Description>ITSE 1430 Fall 2021</Description>
    </PropertyGroup>
 

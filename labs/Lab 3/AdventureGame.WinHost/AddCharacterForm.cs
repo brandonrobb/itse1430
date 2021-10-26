@@ -58,6 +58,7 @@ namespace AdventureGame.WinHost
             character.Name = _txtCharacterName.Text;
             character.Biography = _txtBiography.Text;
             character.Profession = _cbProfession.SelectedText;
+            character.Race = _cbRace.SelectedText;
             //character.RunLength = GetInt32(_txtRunLength);
             character.StrengthLevel = GetInt32(_txtStrength);
             character.Intelligence = GetInt32(_txtIntelligence);

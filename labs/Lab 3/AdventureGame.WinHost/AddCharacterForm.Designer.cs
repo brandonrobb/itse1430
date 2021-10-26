@@ -29,6 +29,7 @@ namespace AdventureGame.WinHost
         /// </summary>
         private void InitializeComponent ()
         {
+            this.components = new System.ComponentModel.Container();
             this._btnSave = new System.Windows.Forms.Button();
             this._btnCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,6 +50,8 @@ namespace AdventureGame.WinHost
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnSave
@@ -169,6 +172,7 @@ namespace AdventureGame.WinHost
             this._txtCharacterName.Name = "_txtCharacterName";
             this._txtCharacterName.Size = new System.Drawing.Size(114, 27);
             this._txtCharacterName.TabIndex = 11;
+            //this._txtCharacterName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
             // 
             // _cbProfession
             // 
@@ -185,6 +189,7 @@ namespace AdventureGame.WinHost
             this._cbProfession.Name = "_cbProfession";
             this._cbProfession.Size = new System.Drawing.Size(138, 28);
             this._cbProfession.TabIndex = 12;
+            //this._cbProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
             // 
             // _cbRace
             // 
@@ -201,6 +206,7 @@ namespace AdventureGame.WinHost
             this._cbRace.Name = "_cbRace";
             this._cbRace.Size = new System.Drawing.Size(138, 28);
             this._cbRace.TabIndex = 13;
+            //this._cbRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
             // 
             // _txtBiography
             // 
@@ -225,6 +231,7 @@ namespace AdventureGame.WinHost
             this._txtStrength.Size = new System.Drawing.Size(114, 27);
             this._txtStrength.TabIndex = 14;
             this._txtStrength.Text = "50";
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
             // 
             // _txtIntelligence
             // 
@@ -235,6 +242,7 @@ namespace AdventureGame.WinHost
             this._txtIntelligence.Size = new System.Drawing.Size(114, 27);
             this._txtIntelligence.TabIndex = 15;
             this._txtIntelligence.Text = "50";
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
             // 
             // _txtAgility
             // 
@@ -245,6 +253,7 @@ namespace AdventureGame.WinHost
             this._txtAgility.Size = new System.Drawing.Size(114, 27);
             this._txtAgility.TabIndex = 16;
             this._txtAgility.Text = "50";
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
             // 
             // _txtConstitution
             // 
@@ -255,6 +264,7 @@ namespace AdventureGame.WinHost
             this._txtConstitution.Size = new System.Drawing.Size(114, 27);
             this._txtConstitution.TabIndex = 17;
             this._txtConstitution.Text = "50";
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
             // 
             // _txtCharisma
             // 
@@ -265,11 +275,17 @@ namespace AdventureGame.WinHost
             this._txtCharisma.Size = new System.Drawing.Size(114, 27);
             this._txtCharisma.TabIndex = 18;
             this._txtCharisma.Text = "50";
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddCharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(745, 494);
             this.Controls.Add(this._txtCharacterName);
             this.Controls.Add(this._cbProfession);
@@ -297,6 +313,7 @@ namespace AdventureGame.WinHost
             this.Name = "AddCharacterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Character  Details";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +342,6 @@ namespace AdventureGame.WinHost
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.ErrorProvider _errors;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
