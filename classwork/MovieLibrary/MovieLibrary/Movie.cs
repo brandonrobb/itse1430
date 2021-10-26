@@ -162,8 +162,9 @@ namespace MovieLibrary
 
         /// <summary>Copies the movie.</summary>
         /// <returns>A copy of the movie.</returns>
-        public Movie Copy ()
+        public Movie Clone ()
         {
+            Movie.Id =
             var movie = new Movie();
             movie.Title = Title;
             movie.Description = Description;
