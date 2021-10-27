@@ -1,7 +1,7 @@
 ﻿
 namespace MovieLibrary.WinHost
 {
-    partial class MainForm
+   partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -50,7 +50,7 @@ namespace MovieLibrary.WinHost
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(871, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(592, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,20 +125,19 @@ namespace MovieLibrary.WinHost
             this._listMovies.ItemHeight = 15;
             this._listMovies.Location = new System.Drawing.Point(0, 24);
             this._listMovies.Name = "_listMovies";
-            this._listMovies.Size = new System.Drawing.Size(871, 510);
+            this._listMovies.Size = new System.Drawing.Size(592, 378);
             this._listMovies.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 534);
+            this.ClientSize = new System.Drawing.Size(592, 402);
             this.Controls.Add(this._listMovies);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Movie Library";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -160,4 +159,3 @@ namespace MovieLibrary.WinHost
         private System.Windows.Forms.ListBox _listMovies;
     }
 }
-

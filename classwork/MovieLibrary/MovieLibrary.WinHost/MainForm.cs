@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace MovieLibrary.WinHost
 {
-    /// <summary>Main window.</summary>
+     /// <summary>Main window.</summary>
     public partial class MainForm : Form
     {
         #region Construction
-         
+
         public MainForm ()
         {
             InitializeComponent();
@@ -19,6 +19,13 @@ namespace MovieLibrary.WinHost
             //Runs at design time as well - be careful
         }
         #endregion
+
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            UpdateUI();
+        }
 
         #region Event Handlers
 
@@ -31,7 +38,7 @@ namespace MovieLibrary.WinHost
 
             Close();
         }
-
+        
         //Called when Help\About is selected
         private void OnHelpAbout ( object sender, EventArgs e )
         {
@@ -50,6 +57,7 @@ namespace MovieLibrary.WinHost
         {
             var dlg = new MovieForm();
             dlg.StartPosition = FormStartPosition.CenterParent;
+
             //ShowDialog -> DialogResult
             if (dlg.ShowDialog(this) != DialogResult.OK)
                 return;
@@ -59,6 +67,7 @@ namespace MovieLibrary.WinHost
             UpdateUI();
         }
 
+        //Called when Movie\Edit is selected
         private void OnMovieEdit ( object sender, EventArgs e )
         {
             if (_movie == null)
@@ -75,18 +84,35 @@ namespace MovieLibrary.WinHost
             _movie = dlg.Movie;
             UpdateUI();
         }
+
+        //Called when Movie\Delete is selected
+        private void OnMovieDelete ( object sender, EventArgs e )
+        {
+            if (_movie == null)
+                return;
+
+            //Confirmation
+            if (!Confirm($"Are you sure you want to delete '{_movie.Title}'?", "Delete"))
+                return;
+
+            //TODO: Delete
+            _movie = null;
+            UpdateUI();
+        }
         #endregion
-        //Todo: Romove this..
+
+        #region Private Members
+
+        //TODO: Remove this...
         private Movie _movie;
 
         private MovieDatabase _movies = new MovieDatabase();
 
-        #region Private Members
-
+        /// <summary>Updates UI whenever something has changed.</summary>
         private void UpdateUI ()
         {
             //Update movie list            
-            Movie[] movies = _movie.GetAll();
+            Movie[] movies = _movies.GetAll();
             var movie = movies[1] = new Movie();
             movie.Title = "Dune";
             movie.Description = "Something";
@@ -104,30 +130,11 @@ namespace MovieLibrary.WinHost
         /// <returns>true if confirmed or false otherwise.</returns>
         private bool Confirm ( string message, string title )
         {
-            return MessageBox.Show(this,message, title,
+            return MessageBox.Show(this, message, title,
                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         == DialogResult.Yes;
         }
 
-        #endregion
-
-        private void OnMovieDelete ( object sender, EventArgs e )
-        {
-            if (_movie == null)
-                return;
-
-            //Confirmation
-            if (!Confirm($"Are you sure you want to delete '{_movie.Title}'?", "Delete"))
-                return;
-
-            //TODO: Delete
-            _movie = null;
-            UpdateUI();
-        }
-
-        private void MainForm_Load ( object sender, EventArgs e )
-        {
-
-        }
+        #endregion        
     }
 }

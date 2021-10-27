@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace MovieLibrary.WinHost
 {
-    /// <summary>Adds or edits a movie.</summary>
+   /// <summary>Adds or edits a movie.</summary>
     public partial class MovieForm : Form
     {
         public MovieForm ()
@@ -16,26 +16,20 @@ namespace MovieLibrary.WinHost
 
         public Movie Movie { get; set; }
 
-        //public override void OnformClosing ( FormClosedEventArgs e )
+        //Called when the form asked to close
+        //protected override void OnFormClosing ( FormClosingEventArgs e )
         //{
         //    base.OnFormClosing(e);
-
             
-
+        //    //Confirm to close if title is set
         //    if (_txtTitle.Text.Length > 0)
         //    {
         //        if (!Confirm("Are you sure you want to close without saving?", "Close"))
         //            e.Cancel = true;
-                        
-        //    }
+        //    };
         //}
 
-        //private bool Confirm ( string message, string title )
-        //{
-        //    return MessageBox.Show(this, message, title,
-        //                           MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        //                == DialogResult.Yes;
-        //}
+        //Called to init the form just before displaying
         protected override void OnLoad ( EventArgs e )
         {
             //Always call base version first
@@ -44,6 +38,7 @@ namespace MovieLibrary.WinHost
             //Load UI, if necessary
             if (Movie != null)
                 LoadMovie(Movie);
+
             //Validate so user can see what is required
             ValidateChildren();
         }
@@ -61,11 +56,11 @@ namespace MovieLibrary.WinHost
         //Called when Save clicked
         private void OnSave ( object sender, EventArgs e )
         {
-            //Validate Children
+            //Validate children
             if (!ValidateChildren())
-                 {
+            {
                 DialogResult = DialogResult.None;
-                    return;
+                return;
             };
 
             //Build up a Movie
@@ -106,81 +101,84 @@ namespace MovieLibrary.WinHost
             return -1;
         }
 
-        private void MovieForm_Load ( object sender, EventArgs e )
-        {
-
-        }
-
         private void _txtTitle_KeyUp ( object sender, KeyEventArgs e )
         {
             var target = sender as TextBox;
 
-            System.Diagnostics.Debug.WriteLine($"KeyUP: Text ={target.Name} Key={e.KeyCode} ");
+            System.Diagnostics.Debug.WriteLine($"KeyUp: Text={target.Name} Key={e.KeyCode}");
+        }
+
+        private bool Confirm ( string message, string title )
+        {
+            return MessageBox.Show(this, message, title,
+                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        == DialogResult.Yes;
         }
 
         private void OnValidatingTitle ( object sender, System.ComponentModel.CancelEventArgs e )
         {
             var control = sender as Control;
+
             //title is required
             if (control.Text.Length > 0)
             {
                 _errors.SetError(control, "");
                 return;
-            }
-            
-            
+            };
 
-            //not valid
+            //Not valid
             _errors.SetError(control, "Title is required");
-            e.Cancel =true;
+            e.Cancel = true;
         }
+
         private void OnValidatingRating ( object sender, System.ComponentModel.CancelEventArgs e )
         {
             var control = sender as Control;
-            //title is required
+
+            //rating is required
             if (control.Text.Length > 0)
             {
                 _errors.SetError(control, "");
                 return;
-            }
-            
+            };
 
-            //not valid
+            //Not valid
             _errors.SetError(control, "Rating is required");
-            e.Cancel =true;
+            e.Cancel = true;
         }
+
         private void OnValidatingRunLength ( object sender, System.ComponentModel.CancelEventArgs e )
         {
             var control = sender as Control;
-            //Run Length is >= 0
+
+            //Run length >= 0
             var value = GetInt32(control);
             if (value >= 0)
             {
                 _errors.SetError(control, "");
                 return;
-            }
-            
+            };
 
-            //not valid
-            _errors.SetError(control, "Runlength must be greater or equal to 0");
-            e.Cancel =true;
+            //Not valid
+            _errors.SetError(control, "Run Length must be >= 0");
+            e.Cancel = true;
         }
+
         private void OnValidatingReleaseYear ( object sender, System.ComponentModel.CancelEventArgs e )
         {
             var control = sender as Control;
-            //Release Year >=1900
+
+            //Release Year >= MinReleaseYear
             var value = GetInt32(control);
             if (value >= Movie.MinimumReleaseYear)
             {
                 _errors.SetError(control, "");
                 return;
-            }
-           
+            };
 
-            //not valid
-            _errors.SetError(control, $"Release Year must be>= {Movie.MinimumReleaseYear}");
-            e.Cancel =true;
+            //Not valid
+            _errors.SetError(control, $"Release Year must be >= {Movie.MinimumReleaseYear}");
+            e.Cancel = true;
         }
     }
-
 }
