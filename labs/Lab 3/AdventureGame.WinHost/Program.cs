@@ -1,3 +1,6 @@
+//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,7 @@ namespace AdventureGame.WinHost
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main ()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

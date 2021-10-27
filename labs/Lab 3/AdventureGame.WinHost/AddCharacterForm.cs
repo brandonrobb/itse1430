@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

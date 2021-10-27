@@ -1,11 +1,14 @@
-﻿using System;
+﻿//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
+using System;
 
 namespace AdventureGame
 {
     public class Character
     {
-        
-        public int Id { get; } 
+
+        public int Id { get; }
 
         // Properties - methods with field-like syntax, exposes data
         //   Property has a type and name
@@ -69,7 +72,7 @@ namespace AdventureGame
         public double ReviewRating { get; set; }
 
         public bool IsClassic { get; set; }
-       
+
         private string _name;
         private string _biography;
         private string _race;
@@ -84,7 +87,7 @@ namespace AdventureGame
         public const int MinimumAttribute = 0;
         public const int MaximumAttribute = 100;
 
-        
+
         public Character Copy ()
         {
             var character = new Character();
@@ -105,10 +108,10 @@ namespace AdventureGame
         }
 
         /// <summary>Validates the object.</summary>
-       /// <returns>The error, if any.</returns>
+        /// <returns>The error, if any.</returns>
         public string Validate ( /* Movie this */ )
         {
-           // Title is required
+            // Title is required
             if (String.IsNullOrEmpty(Name))
                 return "Name is required";
 

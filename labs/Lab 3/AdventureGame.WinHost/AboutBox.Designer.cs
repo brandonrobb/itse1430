@@ -1,4 +1,6 @@
-﻿
+﻿//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
 namespace AdventureGame.WinHost
 {
     partial class AboutBox

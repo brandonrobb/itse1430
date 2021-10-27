@@ -1,4 +1,6 @@
-﻿
+﻿//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
 namespace AdventureGame.WinHost
 {
     partial class AddCharacterForm
@@ -210,8 +212,8 @@ namespace AdventureGame.WinHost
             // 
             // _txtBiography
             // 
-            this._txtBiography.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this._txtBiography.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtBiography.Location = new System.Drawing.Point(134, 171);
             this._txtBiography.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -344,6 +346,6 @@ namespace AdventureGame.WinHost
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.ErrorProvider _errors;
-       
+
     }
 }

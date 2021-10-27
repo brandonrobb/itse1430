@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Brandon Robb
+// ITSE 1430 Fall 2021
+//Adventure Game
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +13,7 @@ using System.Windows.Forms;
 
 namespace AdventureGame.WinHost
 {
-    
+
     public partial class MainForm : Form
     {
         #region Construction
@@ -102,7 +105,7 @@ namespace AdventureGame.WinHost
 
         private Character _character;
 
-        
+
 
         private void UpdateUI ()
         {
@@ -131,7 +134,7 @@ namespace AdventureGame.WinHost
 
         #endregion
 
-        
+
 
     }
 }
