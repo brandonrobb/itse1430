@@ -50,8 +50,8 @@ namespace AdventureGame.WinHost
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnSave
@@ -172,7 +172,7 @@ namespace AdventureGame.WinHost
             this._txtCharacterName.Name = "_txtCharacterName";
             this._txtCharacterName.Size = new System.Drawing.Size(114, 27);
             this._txtCharacterName.TabIndex = 11;
-            //this._txtCharacterName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
+            this._txtCharacterName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
             // 
             // _cbProfession
             // 
@@ -189,7 +189,7 @@ namespace AdventureGame.WinHost
             this._cbProfession.Name = "_cbProfession";
             this._cbProfession.Size = new System.Drawing.Size(138, 28);
             this._cbProfession.TabIndex = 12;
-            //this._cbProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
+            this._cbProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
             // 
             // _cbRace
             // 
@@ -206,7 +206,7 @@ namespace AdventureGame.WinHost
             this._cbRace.Name = "_cbRace";
             this._cbRace.Size = new System.Drawing.Size(138, 28);
             this._cbRace.TabIndex = 13;
-            //this._cbRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
+            this._cbRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRaceOrProfession);
             // 
             // _txtBiography
             // 
@@ -218,6 +218,7 @@ namespace AdventureGame.WinHost
             this._txtBiography.Multiline = true;
             this._txtBiography.Name = "_txtBiography";
             this._txtBiography.PlaceholderText = "Type short history of your character";
+            this._txtBiography.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this._txtBiography.Size = new System.Drawing.Size(250, 72);
             this._txtBiography.TabIndex = 13;
             // 
@@ -277,9 +278,10 @@ namespace AdventureGame.WinHost
             this._txtCharisma.Text = "50";
             this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributeValues);
             // 
-            // errorProvider1
+            // _errors
             // 
-            this.errorProvider1.ContainerControl = this;
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errors.ContainerControl = this;
             // 
             // AddCharacterForm
             // 
@@ -313,7 +315,7 @@ namespace AdventureGame.WinHost
             this.Name = "AddCharacterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Character  Details";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +344,6 @@ namespace AdventureGame.WinHost
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.ErrorProvider _errors;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+       
     }
 }

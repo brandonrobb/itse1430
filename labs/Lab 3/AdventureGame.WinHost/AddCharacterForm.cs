@@ -27,14 +27,15 @@ namespace AdventureGame.WinHost
             //Load UI, if necessary
             if (Character != null)
                 LoadCharacter(Character);
+            ValidateChildren();
         }
 
         private void LoadCharacter ( Character character )
         {
             _txtCharacterName.Text = character.Name;
             _txtBiography.Text = character.Biography;
-            _cbProfession.SelectedValue = character.Profession;
-            _cbRace.SelectedValue = character.Race;
+            _cbProfession.Text = character.Profession;
+            _cbRace.Text = character.Race;
             //_txtRunLength.Text = character.RunLength.ToString();
             _txtStrength.Text = character.StrengthLevel.ToString();
             _txtIntelligence.Text = character.Intelligence.ToString();
@@ -57,8 +58,8 @@ namespace AdventureGame.WinHost
             var character = new Character();
             character.Name = _txtCharacterName.Text;
             character.Biography = _txtBiography.Text;
-            character.Profession = _cbProfession.SelectedText;
-            character.Race = _cbRace.SelectedText;
+            character.Profession = _cbProfession.Text;
+            character.Race = _cbRace.Text;
             //character.RunLength = GetInt32(_txtRunLength);
             character.StrengthLevel = GetInt32(_txtStrength);
             character.Intelligence = GetInt32(_txtIntelligence);
@@ -142,22 +143,22 @@ namespace AdventureGame.WinHost
             e.Cancel = true;
         }
 
-        private void OnValidatingRunLength ( object sender, System.ComponentModel.CancelEventArgs e )
-        {
-            var control = sender as Control;
+        //private void OnValidatingRunLength ( object sender, System.ComponentModel.CancelEventArgs e )
+        //{
+        //    var control = sender as Control;
 
-            //Run length >= 0
-            var value = GetInt32(control);
-            if (value >= 0)
-            {
-                _errors.SetError(control, "");
-                return;
-            };
+        //    //Run length >= 0
+        //    var value = GetInt32(control);
+        //    if (value >= 0)
+        //    {
+        //        _errors.SetError(control, "");
+        //        return;
+        //    };
 
-            //Not valid
-            _errors.SetError(control, "Run Length must be >= 0");
-            e.Cancel = true;
-        }
+        //    //Not valid
+        //    _errors.SetError(control, "Run Length must be >= 0");
+        //    e.Cancel = true;
+        //}
 
         private void OnValidatingAttributeValues ( object sender, System.ComponentModel.CancelEventArgs e )
         {

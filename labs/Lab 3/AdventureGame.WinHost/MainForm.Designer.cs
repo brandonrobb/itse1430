@@ -39,7 +39,10 @@ namespace AdventureGame.WinHost
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._listCharacters = new System.Windows.Forms.ListBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,7 +96,7 @@ namespace AdventureGame.WinHost
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert)));
+            this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.editToolStripMenuItem.Text = "&Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.OnCharacterEdit);
@@ -124,22 +127,30 @@ namespace AdventureGame.WinHost
             // 
             // _listCharacters
             // 
-            this._listCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._listCharacters.FormattingEnabled = true;
+            this._listCharacters.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._listCharacters.ItemHeight = 20;
-            this._listCharacters.Location = new System.Drawing.Point(14, 36);
+            this._listCharacters.Location = new System.Drawing.Point(0, 389);
             this._listCharacters.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._listCharacters.Name = "_listCharacters";
-            this._listCharacters.Size = new System.Drawing.Size(748, 484);
+            this._listCharacters.Size = new System.Drawing.Size(782, 164);
             this._listCharacters.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Size = new System.Drawing.Size(782, 359);
+            this.splitContainer1.SplitterDistance = 308;
+            this.splitContainer1.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this._listCharacters);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -150,6 +161,8 @@ namespace AdventureGame.WinHost
             this.Text = "Adventure Game";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +180,7 @@ namespace AdventureGame.WinHost
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ListBox _listCharacters;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

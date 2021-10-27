@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace AdventureGame.WinHost
 {
+    
     public partial class MainForm : Form
     {
         #region Construction
@@ -22,6 +23,12 @@ namespace AdventureGame.WinHost
         #region Event Handlers
 
         //Called when File\Exit is selected
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            UpdateUI();
+        }
         private void OnFileExit ( object sender, EventArgs e )
         {
             //Confirm exit?
@@ -48,6 +55,7 @@ namespace AdventureGame.WinHost
         private void OnCharacterAdd ( object sender, EventArgs e )
         {
             var dlg = new AddCharacterForm();
+            dlg.StartPosition = FormStartPosition.CenterParent;
 
             //ShowDialog -> DialogResult
             if (dlg.ShowDialog() != DialogResult.OK)
@@ -74,11 +82,27 @@ namespace AdventureGame.WinHost
             _character = dlg.Character;
             UpdateUI();
         }
+
+        private void OnCharacterDelete ( object sender, EventArgs e )
+        {
+            if (_character == null)
+                return;
+
+            //Confirmation *****Make Sure This Works*******
+            if (!Confirm($"Are you sure you want to delete '{_character.Name}'?", "Delete"))
+                return;
+
+            //TODO: Delete
+            _character = null;
+            UpdateUI();
+        }
         #endregion
+
+        #region Private Members
 
         private Character _character;
 
-        #region Private Members
+        
 
         private void UpdateUI ()
         {
@@ -107,19 +131,7 @@ namespace AdventureGame.WinHost
 
         #endregion
 
-        private void OnCharacterDelete ( object sender, EventArgs e )
-        {
-            if (_character == null)
-                return;
-
-            //Confirmation *****Make Sure This Works*******
-            if (!Confirm($"Are you sure you want to delete '{_character.Name}'?", "Delete"))
-                return;
-
-            //TODO: Delete
-            _character = null;
-            UpdateUI();
-        }
+        
 
     }
 }
