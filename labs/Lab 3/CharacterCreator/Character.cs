@@ -10,26 +10,13 @@ namespace AdventureGame
 
         public int Id { get; }
 
-        // Properties - methods with field-like syntax, exposes data
-        //   Property has a type and name
-        //   Properties are Pascal cased and generally public
-        //   Property has a getter to read the value and a setter to write the value
-        //   Getter must return a value of property type
-        //   Setter has a single parameter called `value` of property type
         public string Name
         {
-            //Read: T get_Title ()
             get {
                 return (_name != null) ? _name : "";
-                //if (_title == null)
-                //    return "";
-
-                //return _title; 
             }
 
-            //Write void set_Title ( string value ) 
             set {
-                //_title = value;
                 _name = (value != null) ? value.Trim() : null;
             }
         }
@@ -59,20 +46,6 @@ namespace AdventureGame
         public int Constitution { get; set; }
         public int Charisma { get; set; }
 
-
-        //public int ReleaseYear
-        //{
-        //    get { return _releaseYear; }
-        //    set { _releaseYear = value; }
-        //}
-        /// <summary>Gets or sets the release year.</summary>
-        /// <value>MinimumReleaseYear</value>
-        public int ReleaseYear { get; set; } = MinimumValue;
-
-        public double ReviewRating { get; set; }
-
-        public bool IsClassic { get; set; }
-
         private string _name;
         private string _biography;
         private string _race;
@@ -98,12 +71,8 @@ namespace AdventureGame
             character.Intelligence = Intelligence;
             character.Agility = Agility;
             character.Constitution = Constitution;
-            character.Charisma = Charisma;
-            character.ReleaseYear = ReleaseYear;
-            character.ReviewRating = ReviewRating;
+            character.Charisma = Charisma;          
             character.Race = Race;
-            character.IsClassic = IsClassic;
-
             return character;
         }
 
@@ -139,6 +108,11 @@ namespace AdventureGame
 
 
             return null;
+        }
+
+        public override string ToString ()
+        {
+            return $"{Name} ({Profession}{Race})";
         }
 
         private void SetDescriptionToTitle ()

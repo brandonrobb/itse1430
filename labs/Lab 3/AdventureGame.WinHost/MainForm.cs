@@ -25,7 +25,7 @@ namespace AdventureGame.WinHost
 
         #region Event Handlers
 
-        //Called when File\Exit is selected
+        
         protected override void OnLoad ( EventArgs e )
         {
             base.OnLoad(e);
@@ -34,37 +34,33 @@ namespace AdventureGame.WinHost
         }
         private void OnFileExit ( object sender, EventArgs e )
         {
-            //Confirm exit?
+           
             if (!Confirm("Do you want to quit?", "Confirm"))
                 return;
 
             Close();
         }
 
-        //Called when Help\About is selected
+        
         private void OnHelpAbout ( object sender, EventArgs e )
         {
             var dlg = new AboutBox();
 
-            //Blocks until child form is closed
             dlg.ShowDialog();
-
-            //Show displays modeless, not blocking
-            //dlg.Show();
-            //MessageBox.Show("After Show");
+          
         }
 
-        //Called when Movie\Add is selected
+        
         private void OnCharacterAdd ( object sender, EventArgs e )
         {
             var dlg = new AddCharacterForm();
             dlg.StartPosition = FormStartPosition.CenterParent;
 
-            //ShowDialog -> DialogResult
+            
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
-            //TODO: Save movie            
+                        
             _character = dlg.Character;
             UpdateUI();
         }
@@ -77,11 +73,11 @@ namespace AdventureGame.WinHost
             var dlg = new AddCharacterForm();
             dlg.Character = _character;
 
-            //ShowDialog -> DialogResult
+            
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
-            //TODO: Save movie            
+                        
             _character = dlg.Character;
             UpdateUI();
         }
@@ -91,11 +87,11 @@ namespace AdventureGame.WinHost
             if (_character == null)
                 return;
 
-            //Confirmation *****Make Sure This Works*******
+            
             if (!Confirm($"Are you sure you want to delete '{_character.Name}'?", "Delete"))
                 return;
 
-            //TODO: Delete
+            
             _character = null;
             UpdateUI();
         }
@@ -109,7 +105,7 @@ namespace AdventureGame.WinHost
 
         private void UpdateUI ()
         {
-            //Update movie list            
+                        
             var characters = (_character != null) ? new Character[1] : new Character[0];
             if (_character != null)
                 characters[0] = _character;
@@ -117,7 +113,7 @@ namespace AdventureGame.WinHost
             var bindingSource = new BindingSource();
             bindingSource.DataSource = characters;
 
-            //bind the movies to the listbox
+            
             _listCharacters.DataSource = bindingSource;
         }
 
