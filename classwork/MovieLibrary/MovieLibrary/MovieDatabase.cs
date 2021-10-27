@@ -1,4 +1,7 @@
-﻿using System;
+﻿// ITSE 1430
+// Movie Library
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,79 +11,120 @@ namespace MovieLibrary
 {
     public class MovieDatabase
     {
-        //Add a movie
+        public MovieDatabase ()
+        {
+            //TODO:Seed            
+            //Object initializer - creating and initializing new object
+            // new T() {
+            //   Property1 = Value1,
+            //   Property2 = Value2,
+            //   ...
+            // }
+            _items[0] = new Movie() {
+                Title = "Jaws",
+                Rating = "PG",
+                RunLength = 210,
+                ReleaseYear = 1977,
+                Description = "Shark movie",
+                Id = 1,
+            };
+            
+            _items[1] = new Movie() {
+                Title = "Dune",
+                Rating = "PG",
+                ReleaseYear = 1982,
+                RunLength = 300,
+                Id = 2
+            };
+
+        //movie = new Movie() {
+        //    Title = "Jaws 2",
+        //    Rating = "PG-13",
+        //    ReleaseYear = 1979,
+        //    RunLength = 190,
+        //    Id = 3,
+        //};
+        _items[2] = new Movie() {
+                Title = "Jaws 2",
+                Rating = "PG-13",
+                ReleaseYear = 1979,
+                RunLength = 190,
+                Id = 3,
+            };
+        }
+
+        //TODO: Add 
         public void Add ( Movie movie )
         {
-
         }
-        //Update
+
+        //TODO: Update
         public void Update ( Movie movie )
         {
-
         }
-        //Delete
+
+        //TODO: Delete
         public void Delete ( Movie movie )
         {
-
         }
-
-        //Get
+         
+        //TODO: Get
         public Movie Get ()
         {
             return null;
         }
 
-        //Get All
+        //TODO: Get All
         public Movie[] GetAll ()
         {
-            var count 0;
-
-        };
-            public class MovieDatabase ()
-        { 
-        //Todo:Seed
-            _items[2] = new Movie () 
-            {
-                  Title = "Jaws",
-                  Rating = "PG-13",
-                  ReleaseYear = 1979,
-                  RunLength = 190,
-                  Id = 3,
-            };
-    
-                
-
-         
-
-            //Never do thiss
+            //NEVER DO THIS - should not return a ref type directly, it can be modified
             //return _items;
-            //******Array.Copy() - will copy array but not ref movies****
+            //Array.Copy() - will copy array but not ref movies
+
+            //Need to filter out null movies
+            var count = 0;
+            foreach (var item in _items)
+            {
+                if (item != null)
+                    ++count;
+            };
+
             //Must clone both array and movies to return new copies
-            var items = new Movie[_items.Length];
-            //Dont need the for loop
-            //for (int index = 0; index < _items.Length; ++index)
-            // items[index] = Copy(_items[index]);
             //Each iteration the next element is copied to the item variable
-            //3 limitations
-            // No index (use a simple index variable)
-            // Item is read only
-            //Array cannot change for the life of the loop(keep a separate list)
+            //new Movie[0];
+            var items = new Movie[count];
 
+            #region Syntax and comments
 
+            //Don't need the for loop for enumerating arrays
+            // for-statement ::= for ( Einit ; Econd ; Eupdate ) S;
+            // Equivalent to
+            //   Einit
+            //   while (Econd) { S; Eupdate }
+            //
+            //for (int index = 0; index < _items.Length; ++index)
+            //{ items[index] = Copy(_items[index]); };
+
+            // Use foreach instead
+            //   foreach (T variable in array) S;
+            //
+            // 3 limitations
+            //   No index (use a simple index variable)
+            //   Item is readonly
+            //   Array cannot change for the life of the loop (keep a separate list)
+            #endregion
             var index = 0;
             foreach (var item in _items)
             {
-                //item = new Movie();
-                items[index++] = item.Clone();
+                if (item != null)
+                    items[index++] = item.Clone();
             };
 
             return items;
-
         }
 
         //Arrays are always open in C#
         //Array size is specified at the point of creation
         private Movie[] _items = new Movie[100];
-
     }
 }
