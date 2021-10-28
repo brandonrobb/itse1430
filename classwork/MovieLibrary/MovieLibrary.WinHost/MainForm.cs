@@ -4,6 +4,8 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using MovieLibrary.Memory;
+
 namespace MovieLibrary.WinHost
 {
      /// <summary>Main window.</summary>
@@ -58,45 +60,64 @@ namespace MovieLibrary.WinHost
             var dlg = new MovieForm();
             dlg.StartPosition = FormStartPosition.CenterParent;
 
+            do
+            { 
             //ShowDialog -> DialogResult
             if (dlg.ShowDialog(this) != DialogResult.OK)
                 return;
 
             //TODO: Save movie            
-            _movie = dlg.Movie;
+            if (_movies.Add(dlg.Movie, out var error) == null)
+                DisplayError(error, "Add Failed");
+        } while (true);
+
             UpdateUI();
         }
 
         //Called when Movie\Edit is selected
         private void OnMovieEdit ( object sender, EventArgs e )
         {
-            if (_movie == null)
+            var movie = GetSelectedMovie();
+
+            if (movie == null)
                 return;
 
             var dlg = new MovieForm();
-            dlg.Movie = _movie;
-
+            dlg.Movie = movie;
+            do { 
             //ShowDialog -> DialogResult
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
             //TODO: Save movie            
-            _movie = dlg.Movie;
+            var error = _movies.Update(movie.Id, dlg.Movie);
+            if (string.IsNullOrEmpty(error))
+                break;
+            DisplayError(error, "Update Failed");
+        }while (true);
             UpdateUI();
         }
+
+        private Movie GetSelectedMovie ()
+        {
+            return _listMovies.SelectedItem as Movie;
+        }
+
 
         //Called when Movie\Delete is selected
         private void OnMovieDelete ( object sender, EventArgs e )
         {
-            if (_movie == null)
+
+            var movie = GetSelectedMovie();
+            if (movie == null)
                 return;
 
             //Confirmation
-            if (!Confirm($"Are you sure you want to delete '{_movie.Title}'?", "Delete"))
+            if (!Confirm($"Are you sure you want to delete '{movie.Title}'?", "Delete"))
                 return;
 
             //TODO: Delete
-            _movie = null;
+            _movies.Delete(movie.Id);
             UpdateUI();
         }
         #endregion
@@ -104,9 +125,9 @@ namespace MovieLibrary.WinHost
         #region Private Members
 
         //TODO: Remove this...
-        private Movie _movie;
+      
 
-        private MovieDatabase _movies = new MovieDatabase();
+        private MemoryMovieDatabase _movies = new MemoryMovieDatabase();
 
         /// <summary>Updates UI whenever something has changed.</summary>
         private void UpdateUI ()
@@ -134,7 +155,10 @@ namespace MovieLibrary.WinHost
                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         == DialogResult.Yes;
         }
-
+        private void DisplayError ( string message, string title )
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         #endregion        
     }
 }
