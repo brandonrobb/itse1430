@@ -9,10 +9,40 @@ using System.Threading.Tasks;
 
 namespace MovieLibrary.Memory
 {
-    public class MemoryMovieDatabase
+    public class MemoryMovieDatabase : IMovieDatabase
     {
         public MemoryMovieDatabase ()
         {
+            var movies = new[]
+            {
+                new Movie() {
+                Title = "Jaws",
+                Rating = "PG",
+                RunLength = 210,
+                ReleaseYear = 1977,
+                Description = "Shark movie",
+                Id = 1,
+                },
+
+                new Movie() {
+                Title = "Dune",
+                Rating = "PG",
+                ReleaseYear = 1982,
+                RunLength = 300,
+                Id = 2
+                },
+
+                new Movie() {
+                Title = "Dubll",
+                Rating = "PG",
+                ReleaseYear = 1988,
+                RunLength = 380,
+                Id = 3
+                }
+            };
+
+            _items.AddRange(movies);
+
             //TODO:Seed            
             //Object initializer - creating and initializing new object
             // new T() {
@@ -20,50 +50,38 @@ namespace MovieLibrary.Memory
             //   Property2 = Value2,
             //   ...
             // }
-            _items.Add(new Movie() {
-                Title = "Jaws",
-                Rating = "PG",
-                RunLength = 210,
-                ReleaseYear = 1977,
-                Description = "Shark movie",
-                Id = 1,
-            });
-            
-            _items.Add(new Movie() {
-                Title = "Dune",
-                Rating = "PG",
-                ReleaseYear = 1982,
-                RunLength = 300,
-                Id = 2
-            });
 
-        //movie = new Movie() {
-        //    Title = "Jaws 2",
-        //    Rating = "PG-13",
-        //    ReleaseYear = 1979,
-        //    RunLength = 190,
-        //    Id = 3,
-        //};
-        _items.Add(new Movie() {
-                Title = "Jaws 2",
-                Rating = "PG-13",
-                ReleaseYear = 1979,
-                RunLength = 190,
-                Id = 3,
-            });
+
+            //movie = new Movie() {
+            //    Title = "Jaws 2",
+            //    Rating = "PG-13",
+            //    ReleaseYear = 1979,
+            //    RunLength = 190,
+            //    Id = 3,
+            //};
+            //_items.Add(new Movie() {
+            //    Title = "Jaws 2",
+            //    Rating = "PG-13",
+            //    ReleaseYear = 1979,
+            //    RunLength = 190,
+            //    Id = 3,
+            //});
         }
-
+        public void IsOnlyAvailbleInMemoryMovieDatabase ()
+        { 
+        
+        }
         //TODO: Add 
         public Movie Add ( Movie movie, out string error )
         {
-             error = movie.Validate();
+            error = movie.Validate();
             if (!String.IsNullOrEmpty(error))
                 return null;
-            var existing = FindByTitle (movie.Title);
+            var existing = FindByTitle(movie.Title);
             if (existing != null)
             {
                 error = "Movie cant be nulll";
-                    return null;
+                return null;
 
             }
 
@@ -108,7 +126,7 @@ namespace MovieLibrary.Memory
 
             var dup = FindByTitle(movie.Title);
             if (dup != null && dup.Id != id)
-            return "Movie must be unique";
+                return "Movie must be unique";
 
             Copy(existing, movie);
             return null;
@@ -131,9 +149,9 @@ namespace MovieLibrary.Memory
             if (movie != null)
                 _items.Remove(movie);
         }
-         
+
         //TODO: Get
-        public Movie Get (int id)
+        public Movie Get ( int id )
         {
             var movie = FindById(id);
 
@@ -143,15 +161,15 @@ namespace MovieLibrary.Memory
         //TODO: Get All
         public Movie[] GetAll ()
         {
-           
+
             //Must clone both array and movies to return new copies
             //Each iteration the next element is copied to the item variable
             //new Movie[0];
             var items = new Movie[_items.Count];
             var index = 0;
             foreach (var item in _items)
-            {              
-                    items[index++] = item.Clone();
+            {
+                items[index++] = item.Clone();
             };
 
             return items;
@@ -160,6 +178,6 @@ namespace MovieLibrary.Memory
         private int _nextId = 1;
         //Arrays are always open in C#
         //Array size is specified at the point of creation
-        private List<Movie> _items = new List <Movie>();
+        private List<Movie> _items = new List<Movie>();
     }
 }

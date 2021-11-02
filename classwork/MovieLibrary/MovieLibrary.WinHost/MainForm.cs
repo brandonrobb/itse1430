@@ -108,6 +108,7 @@ namespace MovieLibrary.WinHost
         private void OnMovieDelete ( object sender, EventArgs e )
         {
 
+           // _movies.IsOnlyAvailbleInMemoryMovieDatabase();
             var movie = GetSelectedMovie();
             if (movie == null)
                 return;
@@ -127,7 +128,7 @@ namespace MovieLibrary.WinHost
         //TODO: Remove this...
       
 
-        private MemoryMovieDatabase _movies = new MemoryMovieDatabase();
+        private IMovieDatabase _movies = new MemoryMovieDatabase();
 
         /// <summary>Updates UI whenever something has changed.</summary>
         private void UpdateUI ()
@@ -144,7 +145,7 @@ namespace MovieLibrary.WinHost
             //bind the movies to the listbox
             _listMovies.DataSource = bindingSource;
         }
-
+        
         /// <summary>Displays a confirmation dialog.</summary>
         /// <param name="message">The confirmation message.</param>
         /// <param name="title">The confirmation title.</param>
