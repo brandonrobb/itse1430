@@ -91,7 +91,7 @@ namespace MovieLibrary.WinHost
 
             //TODO: Save movie            
             var error = _movies.Update(movie.Id, dlg.Movie);
-            if (string.IsNullOrEmpty(error))
+            if (String.IsNullOrEmpty(error))
                 break;
             DisplayError(error, "Update Failed");
         }while (true);
@@ -134,10 +134,8 @@ namespace MovieLibrary.WinHost
         private void UpdateUI ()
         {
             //Update movie list            
-            Movie[] movies = _movies.GetAll();
-            var movie = movies[1] = new Movie();
-            movie.Title = "Dune";
-            movie.Description = "Something";
+            var movies = _movies.GetAll();
+           
 
             var bindingSource = new BindingSource();
             bindingSource.DataSource = movies;

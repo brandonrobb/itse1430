@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,15 +69,18 @@ namespace MovieLibrary.Memory
             //});
         }
         public void IsOnlyAvailbleInMemoryMovieDatabase ()
-        { 
-        
+        {
+
         }
         //TODO: Add 
         public Movie Add ( Movie movie, out string error )
         {
-            error = movie.Validate();
-            if (!String.IsNullOrEmpty(error))
+            var validator = new ObjectValidator();
+            if (!validator.TryValidate(movie, out error))
+
                 return null;
+
+
             var existing = FindByTitle(movie.Title);
             if (existing != null)
             {
@@ -116,8 +120,9 @@ namespace MovieLibrary.Memory
         public string Update ( int id, Movie movie )
         {
 
-            var error = movie.Validate();
-            if (!String.IsNullOrEmpty(error))
+            var validator = new ObjectValidator();
+            if (!validator.TryValidate(movie, out var error))
+
                 return error;
 
             var existing = FindById(id);
@@ -159,20 +164,32 @@ namespace MovieLibrary.Memory
         }
 
         //TODO: Get All
-        public Movie[] GetAll ()
+        public IEnumerable<Movie> GetAll ()
         {
 
-            //Must clone both array and movies to return new copies
-            //Each iteration the next element is copied to the item variable
-            //new Movie[0];
-            var items = new Movie[_items.Count];
-            var index = 0;
+            ////Must clone both array and movies to return new copies
+            ////Each iteration the next element is copied to the item variable
+            ////new Movie[0];
+            ///
+            int counter = 0;
+
             foreach (var item in _items)
             {
-                items[index++] = item.Clone();
-            };
+                ++counter;
+                yield return item.Clone();
+            }
+               
 
-            return items;
+
+            //var items = new Movie[_items.Count];
+
+            //var index = 0;
+
+            //foreach (var item in _items)
+            //    items[index++] = item.Clone();
+
+
+            //return items;
         }
 
         private int _nextId = 1;
