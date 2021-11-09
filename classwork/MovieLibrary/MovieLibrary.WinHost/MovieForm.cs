@@ -74,13 +74,11 @@ namespace MovieLibrary.WinHost
 
             //Validate
 
-            var validator = new ObjectValidator();
-            if (!validator.TryValidate(movie, out var error))
-
+            
+            if (!ObjectValidator.TryValidate(movie, out var error))
               
            // var error = movie.Validate();
            // if (!String.IsNullOrEmpty(error))
-
 
             {
                 DisplayError(error, "Error");

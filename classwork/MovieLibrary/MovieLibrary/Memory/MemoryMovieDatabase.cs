@@ -12,62 +12,8 @@ namespace MovieLibrary.Memory
 {
     public class MemoryMovieDatabase : IMovieDatabase
     {
-        public MemoryMovieDatabase ()
-        {
-            var movies = new[]
-            {
-                new Movie() {
-                Title = "Jaws",
-                Rating = "PG",
-                RunLength = 210,
-                ReleaseYear = 1977,
-                Description = "Shark movie",
-                Id = 1,
-                },
-
-                new Movie() {
-                Title = "Dune",
-                Rating = "PG",
-                ReleaseYear = 1982,
-                RunLength = 300,
-                Id = 2
-                },
-
-                new Movie() {
-                Title = "Dubll",
-                Rating = "PG",
-                ReleaseYear = 1988,
-                RunLength = 380,
-                Id = 3
-                }
-            };
-
-            _items.AddRange(movies);
-
-            //TODO:Seed            
-            //Object initializer - creating and initializing new object
-            // new T() {
-            //   Property1 = Value1,
-            //   Property2 = Value2,
-            //   ...
-            // }
-
-
-            //movie = new Movie() {
-            //    Title = "Jaws 2",
-            //    Rating = "PG-13",
-            //    ReleaseYear = 1979,
-            //    RunLength = 190,
-            //    Id = 3,
-            //};
-            //_items.Add(new Movie() {
-            //    Title = "Jaws 2",
-            //    Rating = "PG-13",
-            //    ReleaseYear = 1979,
-            //    RunLength = 190,
-            //    Id = 3,
-            //});
-        }
+       
+           
         public void IsOnlyAvailbleInMemoryMovieDatabase ()
         {
 
@@ -75,8 +21,8 @@ namespace MovieLibrary.Memory
         //TODO: Add 
         public Movie Add ( Movie movie, out string error )
         {
-            var validator = new ObjectValidator();
-            if (!validator.TryValidate(movie, out error))
+           
+            if (!ObjectValidator.TryValidate(movie, out error))
 
                 return null;
 
@@ -120,8 +66,8 @@ namespace MovieLibrary.Memory
         public string Update ( int id, Movie movie )
         {
 
-            var validator = new ObjectValidator();
-            if (!validator.TryValidate(movie, out var error))
+           
+            if (!ObjectValidator.TryValidate(movie, out var error))
 
                 return error;
 
@@ -171,11 +117,12 @@ namespace MovieLibrary.Memory
             ////Each iteration the next element is copied to the item variable
             ////new Movie[0];
             ///
-            int counter = 0;
+            //int counter = 0;
 
             foreach (var item in _items)
             {
-                ++counter;
+                //++counter;
+                System.Diagnostics.Debug.WriteLine($"Returning{item.Title}");
                 yield return item.Clone();
             }
                
